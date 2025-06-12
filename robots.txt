@@ -1,4 +1,16 @@
 User-agent: *
 Allow: /
 
+# Sitemaps
 Sitemap: https://mishwani.is-a.dev/sitemap.xml
+
+# Block unnecessary crawling
+Disallow: /build/
+Disallow: /src/
+Disallow: /*.js$
+Disallow: /*.css$
+Disallow: /sw.js
+
+# Allow important files
+Allow: /images/
+Allow: /favicon.ico
