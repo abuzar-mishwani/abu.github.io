@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef, Suspense } from "react";
 import Preloader from "./components/Preloader";
-import CustomCursor from "./components/CustomCursor";
 import ThemeTransition from "./components/ThemeTransition";
 import ScrollProgress from "./components/ScrollProgress";
 import Header from "./components/Header";
@@ -61,7 +60,6 @@ const App = () => {
       <StructuredData />
       {isLoading && <Preloader onComplete={handlePreloaderComplete} />}
       
-      <CustomCursor />
       <ScrollProgress />
       <ThemeTransition 
         show={showThemeTransition}

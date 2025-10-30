@@ -2,7 +2,8 @@
   "name": "abu-zar",
   "private": true,
   "version": "0.0.0",
-  "type": "module",  "scripts": {
+  "type": "module",
+  "scripts": {
     "dev": "vite",
     "build": "vite build",
     "build:analyze": "vite build && open dist/stats.html",
@@ -23,6 +24,7 @@
     "vite-plugin-pwa": "^1.0.0"
   },
   "dependencies": {
+    "lucide-react": "^0.548.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   }

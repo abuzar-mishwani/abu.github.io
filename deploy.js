@@ -1,63 +1,111 @@
-#!/usr/bin/env node
-
 import { execSync } from "child_process";
 import fs from "fs";
+import path from "path";
 
-console.log("🚀 Starting deployment process...");
+// Configuration
+const REPO_URL = "https://github.com/mishwani7/abu.github.io.git";
+const DIST_FOLDER = "./dist";
+const TEMP_FOLDER = "./.deploy_temp";
 
 try {
-  // Build React app for production
-  console.log("📦 Building for production...");
-  execSync("npm run build", { stdio: "inherit" });
+  console.log("🚀 Starting deployment process...");
 
-  // Check if build folder exists
-  if (!fs.existsSync("./build")) {
-    throw new Error("Build folder not found!");
+  // Check if dist folder exists
+  if (!fs.existsSync(DIST_FOLDER)) {
+    console.error(
+      '❌ dist folder not found. Please run "npm run build" first.'
+    );
+    process.exit(1);
   }
 
-  // Change directory to build folder
-  process.chdir("./build");
-
-  // Initialize git if it does not exist in build folder
-  if (!fs.existsSync(".git")) {
-    console.log("🔧 Initializing git in build folder...");
-    execSync("git init", { stdio: "inherit" });
+  // Clean up temp folder if it exists
+  if (fs.existsSync(TEMP_FOLDER)) {
+    console.log("🧹 Cleaning up temporary folder...");
+    execSync(`rmdir /s /q "${TEMP_FOLDER}"`, { stdio: "inherit" });
   }
 
-  // Add all files
-  console.log("📝 Adding files...");
-  execSync("git add .", { stdio: "inherit" }); // Commit changes with timestamp
-  const timestamp = new Date().toISOString();
-  console.log("💾 Committing changes...");
-  try {
-    execSync(`git commit -m "Deploy React build - ${timestamp}"`, {
-      stdio: "inherit",
-    });
-  } catch (error) {
-    if (error.status === 1) {
-      console.log("ℹ️ No changes to commit, proceeding with deployment...");
+  // Clone the repository
+  console.log("📂 Cloning repository...");
+  execSync(`git clone "${REPO_URL}" "${TEMP_FOLDER}"`, { stdio: "inherit" });
+
+  // Switch to main branch (or create it)
+  console.log("🌿 Switching to main branch...");
+  execSync("git checkout -B main", { cwd: TEMP_FOLDER, stdio: "inherit" });
+
+  // Copy dist files to temp folder
+  console.log("📋 Copying build files...");
+
+  // Copy all files from dist to temp folder (excluding .git)
+  const distFiles = fs.readdirSync(DIST_FOLDER);
+
+  distFiles.forEach((file) => {
+    const srcPath = path.join(DIST_FOLDER, file);
+    const destPath = path.join(TEMP_FOLDER, file);
+
+    if (fs.statSync(srcPath).isDirectory()) {
+      // Copy directory recursively
+      execSync(`xcopy /e /i /h /y "${srcPath}" "${destPath}"`, {
+        stdio: "inherit",
+      });
     } else {
-      throw error;
+      // Copy file
+      fs.copyFileSync(srcPath, destPath);
+    }
+  });
+
+  // Copy CNAME file if it exists
+  if (fs.existsSync("./CNAME")) {
+    fs.copyFileSync("./CNAME", path.join(TEMP_FOLDER, "CNAME"));
+    console.log("📄 CNAME file copied");
+  }
+
+  // Copy other important files
+  if (fs.existsSync("./robots.txt")) {
+    fs.copyFileSync("./robots.txt", path.join(TEMP_FOLDER, "robots.txt"));
+  }
+
+  if (fs.existsSync("./sitemap.xml")) {
+    fs.copyFileSync("./sitemap.xml", path.join(TEMP_FOLDER, "sitemap.xml"));
+  }
+
+  if (fs.existsSync("./manifest.webmanifest")) {
+    fs.copyFileSync(
+      "./manifest.webmanifest",
+      path.join(TEMP_FOLDER, "manifest.webmanifest")
+    );
+  }
+
+  // Add, commit and push
+  console.log("📤 Committing and pushing changes...");
+
+  process.chdir(TEMP_FOLDER);
+
+  execSync("git add .", { stdio: "inherit" });
+
+  const commitMessage = `Deploy portfolio - ${new Date().toISOString()}`;
+  execSync(`git commit -m "${commitMessage}"`, { stdio: "inherit" });
+
+  execSync("git push origin main --force", { stdio: "inherit" });
+
+  // Clean up
+  process.chdir("..");
+  execSync(`rmdir /s /q "${TEMP_FOLDER}"`, { stdio: "inherit" });
+
+  console.log("✅ Deployment completed successfully!");
+  console.log(
+    "🌐 Your site should be available at: https://mishwani.is-a.dev/"
+  );
+} catch (error) {
+  console.error("❌ Deployment failed:", error.message);
+
+  // Clean up on error
+  if (fs.existsSync(TEMP_FOLDER)) {
+    try {
+      execSync(`rmdir /s /q "${TEMP_FOLDER}"`, { stdio: "inherit" });
+    } catch (cleanupError) {
+      console.warn("⚠️  Could not clean up temp folder:", cleanupError.message);
     }
   }
 
-  // Check if remote origin exists, add if not
-  try {
-    execSync("git remote get-url origin", { stdio: "pipe" });
-  } catch {
-    console.log("🔗 Adding remote repository...");
-    execSync(
-      "git remote add origin https://github.com/mishwani7/abu.github.io.git",
-      { stdio: "inherit" }
-    );
-  }
-  // Force push to main branch
-  console.log("🚢 Deploying to main branch...");
-  execSync("git push -f origin HEAD:main", { stdio: "inherit" });
-  console.log("✅ Deployment completed successfully!");
-  console.log(
-    "🌐 Your site files are now on the main branch at: https://github.com/mishwani7/abu.github.io"
-  );
-} catch (error) {console.error("❌ Deployment failed:", error.message);
   process.exit(1);
 }
