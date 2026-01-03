@@ -2068,8 +2068,7 @@ body {
 
 /* Social section hover effect with border */
 .social-section.code-editor-card:hover {
-  box-shadow: 0 15px 35px rgba(102, 52, 241, 0.12),
-    0 6px 24px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(102, 52, 241, 0.1) !important;
+  box-shadow: none !important;
   animation-play-state: paused !important;
   transition: box-shadow 0.3s ease !important;
   border-color: rgba(102, 52, 241, 0.4) !important;
@@ -2079,17 +2078,14 @@ body {
 [data-theme="light"] .social-section.code-editor-card:hover {
   background: rgba(255, 255, 255, 0.98) !important;
   border-color: rgba(102, 52, 241, 0.6) !important;
-  box-shadow: 0 12px 35px rgba(102, 52, 241, 0.08),
-    0 5px 24px rgba(0, 0, 0, 0.04), 0 1px 0 rgba(255, 255, 255, 0.5) inset,
-    0 0 0 1px rgba(102, 52, 241, 0.1) !important;
+  box-shadow: none !important;
 }
 
 /* Dark theme social section hover */
 [data-theme="dark"] .social-section.code-editor-card:hover {
   background: rgba(3, 7, 18, 0.98) !important;
   border-color: rgba(102, 52, 241, 0.5) !important;
-  box-shadow: 0 15px 35px rgba(102, 52, 241, 0.12),
-    0 6px 24px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(102, 52, 241, 0.1) !important;
+  box-shadow: none !important;
 }
 
 /* Social Section Code Editor Styling */
@@ -2418,8 +2414,6 @@ code {
   border: 1px solid rgba(48, 54, 61, 0.8);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
-    0 1px 0 rgba(255, 255, 255, 0.05) inset;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   min-height: auto;
@@ -2453,9 +2447,7 @@ code {
 .code-editor-card:hover:not(.social-section) {
   background: rgba(22, 27, 34, 0.98);
   border-color: rgba(102, 52, 241, 0.4);
-  box-shadow: 0 12px 35px rgba(102, 52, 241, 0.12),
-    0 5px 24px rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.08) inset,
-    0 0 0 1px rgba(102, 52, 241, 0.1);
+  box-shadow: none !important;
   transform: translateY(-8px) scale(1.02) perspective(1000px) rotateX(1deg);
 }
 
@@ -2463,17 +2455,13 @@ code {
 [data-theme="light"] .code-editor-card {
   background: rgba(255, 255, 255, 0.95);
   border: 1px solid rgba(230, 230, 250, 0.8);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08),
-    0 1px 0 rgba(255, 255, 255, 0.3) inset;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 [data-theme="light"] .code-editor-card:hover:not(.social-section) {
   background: rgba(255, 255, 255, 0.98);
   border-color: rgba(102, 52, 241, 0.6);
-  box-shadow: 0 12px 35px rgba(102, 52, 241, 0.08),
-    0 5px 24px rgba(0, 0, 0, 0.04), 0 1px 0 rgba(255, 255, 255, 0.5) inset,
-    0 0 0 1px rgba(102, 52, 241, 0.1);
+  box-shadow: none !important;
   transform: translateY(-8px) scale(1.02);
 }
 
@@ -4121,6 +4109,86 @@ code {
 
 [data-theme="light"] .quote-author {
   color: rgba(102, 52, 241, 1);
+}
+
+/* ==========================================
+   FLOATING RESUME DOWNLOAD BUTTON
+   ========================================== */
+
+.floating-resume-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: linear-gradient(135deg, #6634f1, #8b5cf6);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(102, 52, 241, 0.4);
+}
+
+.floating-resume-btn span {
+  color: #ffffff;
+}
+
+.floating-resume-btn svg {
+  color: #ffffff;
+  stroke: #ffffff;
+  animation: bounce-down 2s ease-in-out infinite;
+}
+
+.floating-resume-btn:hover {
+  background: linear-gradient(135deg, #5429d1, #7c4be6);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 25px rgba(102, 52, 241, 0.5);
+}
+
+@keyframes bounce-down {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+[data-theme="light"] .floating-resume-btn {
+  box-shadow: 0 4px 20px rgba(102, 52, 241, 0.3);
+}
+
+[data-theme="light"] .floating-resume-btn:hover {
+  box-shadow: 0 6px 25px rgba(102, 52, 241, 0.4);
+}
+
+/* Responsive styles for floating button */
+@media (max-width: 768px) {
+  .floating-resume-btn {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    padding: 0.65rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-resume-btn span {
+    display: none;
+  }
+
+  .floating-resume-btn {
+    padding: 0.85rem;
+    border-radius: 50%;
+  }
 }
 
 /* ==========================================

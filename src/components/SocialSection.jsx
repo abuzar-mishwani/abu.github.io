@@ -84,10 +84,10 @@ const SocialSection = () => {
       username: "@personal"
     },
     {
-      href: "https://github.com/mishwani7",
+      href: "https://github.com/abuzar-mishwani",
       icon: "fa-brands fa-github",
       platform: "github",
-      username: "@mishwani7"
+      username: "@abuzar-mishwani"
     },
     {
       href: "https://mishwani.techabu.co/",

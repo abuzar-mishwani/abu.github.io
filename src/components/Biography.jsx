@@ -14,7 +14,8 @@ import {
   Gamepad2,
   Target,
   Sparkles,
-  ChevronDown
+  ChevronDown,
+  Download
 } from "lucide-react";
 
 const BiographySection = ({ id, title, children, sectionNumber }) => {
@@ -36,7 +37,7 @@ const BiographySection = ({ id, title, children, sectionNumber }) => {
       9: "HindukushSoft Technologies",
       10: "Volunteering and Giving Back",
       11: "Technical Skills",
-      12: "Hobbies and Inspirations",
+      12: "Hobbies and Gaming",
       13: "Vision and Future",
       14: "Closing Thoughts",
     };
@@ -319,7 +320,7 @@ const Biography = () => {
           </a>
           <a href="#hobbies-inspirations" className="toc-item">
             <span className="toc-icon"><Gamepad2 size={18} /></span>
-            <span className="toc-title">Hobbies & Heroes</span>
+            <span className="toc-title">Hobbies & Gaming</span>
           </a>
           <a href="#vision-future" className="toc-item">
             <span className="toc-icon"><Target size={18} /></span>
@@ -334,12 +335,12 @@ const Biography = () => {
 
       <div className="section-connector"></div>
 
-      <BiographySection id="introduction" title="Introduction" sectionNumber={1}>
+      <BiographySection id="introduction" title="Who I Am" sectionNumber={1}>
         <p>
           My name is <span className="highlight">Abu Zar Mishwani</span>, and people close to me also call me <span className="highlight">Mufasa</span>, a nickname I proudly carry. It is inspired by the wise and brave character from <a href="https://en.wikipedia.org/wiki/The_Lion_King" target="_blank" className="link" rel="noopener noreferrer">The Lion King</a>. The name Mufasa means king or brave leader, and I have always loved it because it reminds me to lead with strength, kindness, and responsibility.
         </p>
         <p>
-          I was born on <span className="highlight">August 24, 2000</span>, in a small and remote village called <span className="highlight">Domel Nisar</span>, near Arandu, close to the Afghan border in Chitral, Pakistan. My village is a beautiful but backward place surrounded by mountains and rivers, where modern facilities like electricity, gas, internet, and proper schools hardly exist. Life there was simple, but opportunities were limited.
+          I was born on <span className="highlight">August 24, 2000</span>, in a small and remote village called <span className="highlight">Domel Nisar</span>, near Arandu, close to the Afghan border in Chitral, Pakistan. It is one of those places where life is peaceful but isolated. There were no proper schools, no healthcare, and no communication network. Growing up there was simple, but it also meant that opportunities were almost nonexistent.
         </p>
         <p>
           My father, a government school teacher and principal, realized that his children's future could not be built there. He once told my mother, "Our children cannot grow here the way we want them to." With that thought and faith in Allah, he decided to move our family to Drosh, a small town in Chitral, so we could get an education and a better life.
@@ -373,19 +374,22 @@ const Biography = () => {
 
       <BiographySection id="the-beginning" title="The Beginning" sectionNumber={3}>
         <p>
-          My journey with computers started in <span className="highlight">2010</span>, when I was in class 4. I was ten years old when my father came home one day and said, "Abu Zar, there's a new computer center nearby. Would you like to join?"
+          My journey with computers started in <span className="highlight">2010</span>, when I was in fourth grade. I was a <span className="highlight">ten-year-old boy</span> who had never even seen a computer. One day my father came home and said, "Abu Zar, a <span className="highlight">computer center</span> has opened nearby. Would you like to join?"
         </p>
         <p>
-          At that time, I didn't even know what a computer was, but I said yes immediately. I still remember my excitement on the first day. I sat in front of a computer, and it felt like magic. I learned to type with small fingers, worked on <span className="highlight">MS Word and Excel</span>, and after a few months, I received my first certificate. That was one of the happiest moments of my childhood.
+          I didn't really understand what a computer was, but something in me was curious. Without thinking much, I said, "Yes, Baba, I'll join!"
         </p>
         <p>
-          A few months later, my father bought me my first computer, a <span className="highlight">used Pentium 2</span>. At first, I only used it for playing games, but soon my curiosity took over. In <span className="highlight">2016</span>, after many requests, I got my first smartphone, and that changed everything.
+          That single decision changed my life. I still remember those early days. My small hands struggled to type on the keyboard, and I used to get excited every time I learned something new in <span className="highlight">MS Word or Excel</span>. After a few months, I received my first computer certificate, and it felt like a big achievement.
         </p>
         <p>
-          For the first time, I could connect to the internet. I learned that I needed a Wi-Fi adapter, but it cost around Rs. 800, and my pocket money was only Rs. 10 a day. I didn't know how to ask my father for it, so I told my elder sister when she visited. Without thinking twice, she gave me Rs. 1000. I still remember how happy I was that day. I ran to the shop, bought the adapter, and connected my computer to the internet.
+          Not long after, my father bought me my first computer, an <span className="highlight">old Pentium 2</span>. At that age, I only used it to play games. But as I grew older, my curiosity grew with me. In <span className="highlight">2016</span>, after many requests, I finally got my first <span className="highlight">smartphone</span>. That was when everything changed.
         </p>
         <p>
-          That day, when <span className="highlight">Google</span> opened on my screen for the first time, I felt like I had unlocked a new world. I whispered to myself, "Now Google is mine."
+          With that phone came <span className="highlight">internet access</span>, and I wanted to connect it to my computer. I soon found out I needed a <span className="highlight">Wi-Fi adapter</span>, which cost around Rs. 800, but my pocket money was only Rs. 10 a day. I didn't want to bother my father, so when my elder sister came home, I shared my wish with her. Without a second thought, she gave me Rs. 1000.
+        </p>
+        <p>
+          That day felt magical. I bought the adapter, connected to the internet, and for the first time, I opened <span className="highlight">Google</span> on my computer. I still remember the feeling. I sat back and said to myself, "Now the world is in front of me. <span className="highlight">Google is mine</span>."
         </p>
       </BiographySection>
 
@@ -393,13 +397,19 @@ const Biography = () => {
 
       <BiographySection id="exploration-curiosity" title="Exploration and Curiosity" sectionNumber={4}>
         <p>
-          Once I had access to the internet, I spent hours exploring random things. I didn't even know what to search for in the beginning. Then one day, I asked myself, <span className="highlight">"How are websites made?"</span>
+          Once I had <span className="highlight">internet</span>, I spent hours exploring. At first, I didn't even know what to search for. I would sit there thinking, "What should I learn today?"
         </p>
         <p>
-          That one question opened the door to my future. I started learning how to make websites. I first found platforms like <span className="highlight">Wix</span>, then discovered <span className="highlight">WordPress</span>, and step by step began to understand how the web worked. I even bought my first domain name with my Eidi money, without knowing exactly what I was going to do with it.
+          Then one day, a random thought crossed my mind:
+        </p>
+        <p className="quote">
+          <em>"How are websites made?"</em>
         </p>
         <p>
-          At that time, I had no guide, no IT background in my family, and no one to ask for help. It was just me, my curiosity, and <span className="highlight">YouTube</span>. Every time something didn't work, I would sit for hours trying to fix it. Sometimes I wanted to give up, but I never did. Every time I solved a problem, I learned something new.
+          That simple question opened the door to my journey as a <span className="highlight">developer</span>. I started experimenting with website builders like <span className="highlight">Wix</span>, then discovered <span className="highlight">WordPress</span>, and slowly learned how to build websites. I even bought my first <span className="highlight">domain</span> with Eidi money, not even knowing what I would do with it.
+        </p>
+        <p>
+          Back then, I had <span className="highlight">no teacher or mentor</span>. No one in my family knew about computers, and no one in my town could guide me. It was just me, my passion, and <span className="highlight">YouTube</span>. Every day I faced problems I couldn't solve, and every night I tried again. It was frustrating, but every solved problem taught me something new.
         </p>
       </BiographySection>
 
@@ -421,7 +431,7 @@ const Biography = () => {
 
       <BiographySection id="freelancing-earnings" title="Freelancing and First Earnings" sectionNumber={6}>
         <p>
-          My freelancing journey began while I was doing my FSc. It started when I realized that the skills I was learning could actually help others. I began offering small services like <span className="highlight">creating WordPress websites, doing SEO, and writing content</span>.
+          My freelancing journey began while I was doing my ICS. It started when I realized that the skills I was learning could actually help others. I began offering small services like <span className="highlight">creating WordPress websites, doing SEO, and writing content</span>.
         </p>
         <p>
           I still remember the day I received my <span className="highlight">first payment</span>. It was not a big amount, but it felt like I had conquered the world. Earning money for the first time through something I built on my own was an unforgettable moment. That day, I realized that with knowledge and determination, you can create your own opportunities.
@@ -518,18 +528,12 @@ const Biography = () => {
 
       <div className="section-connector"></div>
 
-      <BiographySection id="hobbies-inspirations" title="Hobbies and Inspirations" sectionNumber={12}>
+      <BiographySection id="hobbies-inspirations" title="Hobbies and Gaming" sectionNumber={12}>
         <p>
-          Outside of work, I have always loved <span className="highlight">cricket</span>. I used to be a proper cricketer, a good batsman, and a part-time bowler. After completing my FSc, I had to quit cricket to focus on my studies, but the passion for the game still lives in me.
+          Outside of work, I have always loved <span className="highlight">cricket</span>. I used to be a proper cricketer, a good batsman, and a part-time bowler. After completing my ICS, I had to quit cricket to focus on my studies, but the passion for the game still lives in me.
         </p>
         <p>
           Between 2010 and 2016, I was also a dedicated gamer, playing almost every popular computer game of that time, including <span className="highlight">GTA V, Max Payne 3, Call of Duty</span>, among others. Those years as a gamer improved my focus, problem-solving, and creativity.
-        </p>
-        <p>
-          My favorite batsman is <span className="highlight">Babar Azam</span> because of his calmness, discipline, and humility. I admire how he performs with grace and focus, no matter how big the stage.
-        </p>
-        <p>
-          My favorite superhero is <span className="highlight">Iron Man (Tony Stark)</span> because he represents intelligence, innovation, and the power of using technology for good. I relate to him because I also believe in building solutions that make life better for others.
         </p>
       </BiographySection>
 
@@ -560,6 +564,18 @@ const Biography = () => {
           <p className="quote-author">— Abu Zar Mishwani</p>
         </div>
       </BiographySection>
+
+      {/* Floating Download Resume Button */}
+      <a 
+        href="https://mishwani.techabu.co/wp-content/uploads/2025/06/Abu_Zar_Mishwani_Resume.pdf" 
+        className="floating-resume-btn"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Download Resume"
+      >
+        <Download size={20} />
+        <span>Resume</span>
+      </a>
     </>
   );
 };

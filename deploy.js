@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 
 // Configuration
-const REPO_URL = "https://github.com/mishwani7/abu.github.io.git";
+const REPO_URL = "https://github.com/abuzar-mishwani/abu.github.io.git";
 const DIST_FOLDER = "./dist";
 const TEMP_FOLDER = "./.deploy_temp";
 
@@ -73,6 +73,11 @@ try {
       "./manifest.webmanifest",
       path.join(TEMP_FOLDER, "manifest.webmanifest")
     );
+  }
+
+  if (fs.existsSync("./public/_headers")) {
+    fs.copyFileSync("./public/_headers", path.join(TEMP_FOLDER, "_headers"));
+    console.log("📄 _headers file copied");
   }
 
   // Add, commit and push
