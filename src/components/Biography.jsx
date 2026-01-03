@@ -566,16 +566,21 @@ const Biography = () => {
       </BiographySection>
 
       {/* Floating Download Resume Button */}
-      <a 
-        href="https://mishwani.techabu.co/wp-content/uploads/2025/06/Abu_Zar_Mishwani_Resume.pdf" 
+      <button 
         className="floating-resume-btn"
-        target="_blank"
-        rel="noopener noreferrer"
+        onClick={() => {
+          const link = document.createElement('a');
+          link.href = "https://mishwani.techabu.co/wp-content/uploads/2025/06/Abu_Zar_Mishwani_Resume.pdf";
+          link.download = "Abu_Zar_Mishwani_Resume.pdf";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }}
         title="Download Resume"
       >
         <Download size={20} />
         <span>Resume</span>
-      </a>
+      </button>
     </>
   );
 };
