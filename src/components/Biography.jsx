@@ -570,8 +570,8 @@ const Biography = () => {
         className="floating-resume-btn"
         onClick={() => {
           const link = document.createElement('a');
-          link.href = "https://mishwani.techabu.co/wp-content/uploads/2025/06/Abu_Zar_Mishwani_Resume.pdf";
-          link.download = "Abu_Zar_Mishwani_Resume.pdf";
+          link.href = "https://mishwani.techabu.co/wp-content/uploads/2026/01/Abu-Zar-Mishwani-Resume.pdf";
+          link.download = "Abu-Zar-Mishwani-Resume.pdf";
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);
