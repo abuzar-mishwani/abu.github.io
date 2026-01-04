@@ -4152,6 +4152,37 @@ code {
   box-shadow: 0 6px 25px rgba(102, 52, 241, 0.5);
 }
 
+.floating-resume-btn:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+.floating-resume-btn.downloading {
+  animation: pulse-button 1s ease-in-out infinite;
+}
+
+.floating-resume-btn.downloading svg {
+  animation: spin-download 1s linear infinite;
+}
+
+@keyframes spin-download {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-button {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(102, 52, 241, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 30px rgba(102, 52, 241, 0.6);
+  }
+}
+
 @keyframes bounce-down {
   0%,
   100% {

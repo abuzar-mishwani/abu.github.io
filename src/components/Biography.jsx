@@ -214,6 +214,7 @@ const BiographySection = ({ id, title, children, sectionNumber }) => {
 
 const Biography = () => {
   const [isTocExpanded, setIsTocExpanded] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
 
   useEffect(() => {
     // Scroll animations observer
@@ -567,19 +568,22 @@ const Biography = () => {
 
       {/* Floating Download Resume Button */}
       <button 
-        className="floating-resume-btn"
+        className={`floating-resume-btn ${isDownloading ? 'downloading' : ''}`}
         onClick={() => {
+          setIsDownloading(true);
           const link = document.createElement('a');
           link.href = "/Abu-Zar-Mishwani-Resume.pdf";
           link.download = "Abu-Zar-Mishwani-Resume.pdf";
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);
+          setTimeout(() => setIsDownloading(false), 1500);
         }}
+        disabled={isDownloading}
         title="Download Resume"
       >
         <Download size={20} />
-        <span>Resume</span>
+        <span>{isDownloading ? 'Downloading...' : 'Resume'}</span>
       </button>
     </>
   );
