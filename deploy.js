@@ -10,10 +10,14 @@ const TEMP_FOLDER = "./.deploy_temp";
 try {
   console.log("🚀 Starting deployment process...");
 
+  // Build fresh production bundle
+  console.log("🛠️ Building project (npm run build)...");
+  execSync("npm run build", { stdio: "inherit" });
+
   // Check if dist folder exists
   if (!fs.existsSync(DIST_FOLDER)) {
     console.error(
-      '❌ dist folder not found. Please run "npm run build" first.'
+      '❌ dist folder not found. Build may have failed.'
     );
     process.exit(1);
   }
