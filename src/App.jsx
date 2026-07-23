@@ -22,13 +22,13 @@ const sectionComponents = {
 };
 
 const App = () => {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState("light");
   const [activeView, setActiveView] = useState("home");
   const [isLoading, setIsLoading] = useState(true);
 
   // Load saved theme
   useEffect(() => {
-    const saved = localStorage.getItem("portfolio-theme") || "dark";
+    const saved = localStorage.getItem("portfolio-theme") || "light";
     setTheme(saved);
     if (saved === "dark") {
       document.documentElement.classList.add("dark");
