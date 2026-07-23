@@ -91,7 +91,7 @@ const StaggeredLetters = ({ text, delay = 0, className }) => {
               {letter}
             </motion.span>
           ))}
-          {wordIndex !== words.length - 1 && <span className="inline-block">&nbsp;</span>}
+          {wordIndex !== words.length - 1 && "\u00A0"}
         </span>
       ))}
     </motion.span>

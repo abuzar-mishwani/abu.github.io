@@ -55,7 +55,7 @@ const menuItems = [
   },
 ];
 
-const AnimatedText = ({ text, className, delay = 0 }) => {
+const AnimatedText = ({ text, className, delay = 0, children }) => {
   const words = text.split(" ");
   const container = {
     hidden: { opacity: 0 },
@@ -76,6 +76,11 @@ const AnimatedText = ({ text, className, delay = 0 }) => {
           {word}
         </motion.span>
       ))}
+      {children && (
+        <motion.span variants={child} className="inline-block">
+          {children}
+        </motion.span>
+      )}
     </motion.div>
   );
 };
@@ -104,7 +109,7 @@ const StaggeredLetters = ({ text, delay = 0, className }) => {
               {letter}
             </motion.span>
           ))}
-          {wordIndex !== words.length - 1 && <span className="inline-block">&nbsp;</span>}
+          {wordIndex !== words.length - 1 && "\u00A0"}
         </span>
       ))}
     </motion.span>
@@ -113,7 +118,7 @@ const StaggeredLetters = ({ text, delay = 0, className }) => {
 
 // Component for continuous looped letter-by-letter wave animation
 const LoopedStaggeredLetters = ({ text, entranceDelay = 0, className }) => {
-  const letters = Array.from(text);
+  const words = text.split(" ");
   
   const container = {
     hidden: { opacity: 0 },
@@ -130,18 +135,23 @@ const LoopedStaggeredLetters = ({ text, entranceDelay = 0, className }) => {
 
   return (
     <motion.span variants={container} initial="hidden" animate="show" className={`inline-block ${className}`}>
-      {letters.map((letter, index) => (
-        <motion.span variants={childEntrance} key={index} className="inline-block">
-          <span
-            className="inline-block animate-wave-text"
-            style={{ 
-              animationDelay: `${index * 0.1}s`,
-              WebkitAnimationDelay: `${index * 0.1}s` 
-            }}
-          >
-            {letter === " " ? "\u00A0" : letter}
-          </span>
-        </motion.span>
+      {words.map((word, wordIndex) => (
+        <span key={wordIndex} className="inline-block whitespace-nowrap">
+          {Array.from(word).map((letter, letterIndex) => (
+            <motion.span variants={childEntrance} key={letterIndex} className="inline-block">
+              <span
+                className="inline-block animate-wave-text"
+                style={{ 
+                  animationDelay: `${(wordIndex * 10 + letterIndex) * 0.1}s`,
+                  WebkitAnimationDelay: `${(wordIndex * 10 + letterIndex) * 0.1}s` 
+                }}
+              >
+                {letter}
+              </span>
+            </motion.span>
+          ))}
+          {wordIndex !== words.length - 1 && "\u00A0"}
+        </span>
       ))}
     </motion.span>
   );
@@ -240,18 +250,16 @@ const HeroGreeting = ({ onNavigate }) => {
 
             {/* Word-by-Word Animated Bio */}
             <div className="text-lg md:text-xl text-muted-foreground font-medium leading-relaxed max-w-md">
-              <AnimatedText text="Software Engineer & Tech Entrepreneur. Building scalable software solutions and leading" delay={0.8} />
-              <motion.a 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.3, duration: 0.5 }}
-                href="https://www.hindukushsoft.com" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="inline-block text-foreground hover:text-blue-600 dark:hover:text-blue-500 transition-colors underline decoration-border hover:decoration-blue-500 underline-offset-4 mt-1"
-              >
-                HindukushSoft Technologies.
-              </motion.a>
+              <AnimatedText text="Software Engineer & Tech Entrepreneur. Building scalable software solutions and leading" delay={0.8}>
+                <a 
+                  href="https://www.hindukushsoft.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-foreground hover:text-blue-600 dark:hover:text-blue-500 transition-colors underline decoration-border hover:decoration-blue-500 underline-offset-4"
+                >
+                  HindukushSoft Technologies.
+                </a>
+              </AnimatedText>
             </div>
 
             {/* Quick Social Links */}
