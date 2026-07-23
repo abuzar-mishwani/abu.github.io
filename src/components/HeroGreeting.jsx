@@ -282,9 +282,10 @@ const HeroGreeting = ({ onNavigate }) => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 shrink-0 rounded-full border border-border bg-transparent flex items-center justify-center text-muted-foreground shadow-sm hover:shadow-md group btn-wave-hover"
+                  onClick={(e) => e.currentTarget.blur()}
+                  className="w-10 h-10 shrink-0 rounded-full border border-border bg-transparent flex items-center justify-center text-muted-foreground shadow-sm hover:shadow-md group [media(hover:hover)]:btn-wave-hover outline-none select-none"
                 >
-                  <span className="relative z-10 flex items-center justify-center group-hover:text-background transition-colors">
+                  <span className="relative z-10 transition-transform duration-300 group-hover:scale-110">
                     {social.icon}
                   </span>
                 </a>
@@ -316,10 +317,13 @@ const HeroGreeting = ({ onNavigate }) => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-20px" }}
                     transition={{ delay: 0.4 + index * 0.1, type: "spring", stiffness: 200, damping: 20 }}
-                    onClick={() => onNavigate(item.key)}
+                    onClick={(e) => {
+                      onNavigate(item.key);
+                      e.currentTarget.blur();
+                    }}
                     whileHover={{ scale: 1.01 }}
                     whileTap={{ scale: 0.98 }}
-                    className="group relative flex items-center gap-4 cursor-pointer z-10 pl-4 md:pl-[64px] pr-4 py-3 rounded-2xl hover:bg-card/40 transition-colors border border-transparent hover:border-border/50 text-left"
+                    className="group relative flex items-center gap-4 cursor-pointer z-10 pl-4 md:pl-[64px] pr-4 py-3 rounded-2xl [media(hover:hover)]:hover:bg-card/40 transition-colors border border-transparent [media(hover:hover)]:hover:border-border/50 text-left outline-none select-none"
                   >
                     {/* Timeline Node Point */}
                     <div className="hidden md:block absolute left-[9px] w-[14px] h-[14px] rounded-full border-2 border-background bg-border group-hover:bg-blue-600 group-hover:scale-150 group-hover:shadow-[0_0_10px_rgba(37,99,235,0.5)] transition-all duration-300 z-10" />

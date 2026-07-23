@@ -7,33 +7,31 @@ import {
   Utensils,
   Hotel,
   Store,
-  Star,
-  CheckCircle2,
   ArrowLeft,
   Download,
-  Code2
+  Code2,
+  Brain,
+  Wrench,
+  Globe,
+  HeartPulse,
+  ShoppingBag,
+  Smartphone,
+  ShieldCheck,
+  Monitor,
+  Newspaper,
+  Building2
 } from "lucide-react";
 
 const projects = [
   {
     icon: <Sprout className="w-5 h-5" />,
-    name: "Digitization of Model Farm Services Center — KP",
+    name: "Model Farm Services Center KP",
     role: "Lead Developer",
     status: "Production",
     desc: "A massive production-grade enterprise MIS for the Agriculture Department. Currently rolling out across all 38 districts of Khyber Pakhtunkhwa under the Government of KP.",
     tags: ["React", "TypeScript", "Laravel", "MySQL", "Vite"],
     url: "https://mfsckp.com",
-    linkText: "mfsckp.com",
-  },
-  {
-    icon: <Calculator className="w-5 h-5" />,
-    name: "GPA Calculator & Planner",
-    role: "Solo Developer",
-    status: "Production — #1 Worldwide",
-    desc: "The #1 GPA Calculator app globally on Android. Custom grading scales, semester planning, target GPA forecasting, and professional PDF reporting.",
-    tags: ["Kotlin", "Jetpack Compose", "Material 3"],
-    url: "https://play.google.com/store/apps/details?id=advc.calc.easygpacalculator&hl=en",
-    linkText: "Play Store"
+    linkText: "mfsckp.com"
   },
   {
     icon: <Utensils className="w-5 h-5" />,
@@ -57,13 +55,123 @@ const projects = [
   },
   {
     icon: <Store className="w-5 h-5" />,
-    name: "Inventro POS",
+    name: "Inventro POS Desktop",
     role: "Lead Developer",
     status: "Production",
-    desc: "Desktop POS and inventory management system for retail businesses. Features billing, supplier management, khaata management, expense tracking, and role-based access.",
+    desc: "Desktop POS and inventory management system for retail businesses. Features billing, supplier management, khaata accounting, expense tracking, and role-based access.",
     tags: ["Electron", "React", "TypeScript", "SQLite"],
     url: "https://inventro.hindukushsoft.com",
     linkText: "inventro.hindukushsoft.com"
+  },
+  {
+    icon: <Smartphone className="w-5 h-5" />,
+    name: "Inventro Pocket",
+    role: "Lead Mobile Developer",
+    status: "Production - Play Store",
+    desc: "Native Android companion app for Inventro POS Desktop. Real-time remote monitoring of daily sales, inventory catalogs, bank accounts, and customer dues from anywhere in the world.",
+    tags: ["Kotlin", "Jetpack Compose", "Material 3", "Android"],
+    url: "https://play.google.com/store/apps/details?id=com.inventro.pocket",
+    linkText: "Play Store"
+  },
+  {
+    icon: <Calculator className="w-5 h-5" />,
+    name: "GPA Calculator & Planner",
+    role: "Solo Developer",
+    status: "Production - #1 Worldwide",
+    desc: "The #1 GPA Calculator app globally on Android. Custom grading scales, semester planning, target GPA forecasting, and professional PDF reporting.",
+    tags: ["Kotlin", "Jetpack Compose", "Material 3"],
+    url: "https://play.google.com/store/apps/details?id=advc.calc.easygpacalculator&hl=en",
+    linkText: "Play Store"
+  },
+  {
+    icon: <Building2 className="w-5 h-5" />,
+    name: "StayLedger ERP & Web App",
+    role: "Lead Developer",
+    status: "Production",
+    desc: "Enterprise cloud-based hotel management ERP centralizing reservations, billing, multi-outlet POS, housekeeping, inventory, and HR workflows with role-based access control.",
+    tags: ["React", "TypeScript", "Laravel", "MySQL"],
+    url: "https://stayledger.hindukushsoft.com/",
+    linkText: "stayledger.hindukushsoft.com"
+  },
+  {
+    icon: <Monitor className="w-5 h-5" />,
+    name: "StayLedger Desktop App",
+    role: "Lead Developer",
+    status: "Production",
+    desc: "Cross-platform desktop suite for offline resilience and local data persistence, unifying hotel front-desk operations, billing, and reservation management.",
+    tags: ["Electron", "React", "TypeScript", "SQLite"],
+    url: "https://stayledger.hindukushsoft.com/",
+    linkText: "stayledger.hindukushsoft.com"
+  },
+  {
+    icon: <Brain className="w-5 h-5" />,
+    name: "MindScreen AI",
+    role: "Lead Developer",
+    status: "In Development",
+    desc: "AI-driven digital health platform delivering clinically validated screening tools (PHQ-9, GAD-7, ASRS). Features an intelligent assessment scoring engine, privacy-first UX, and real-time personalized insights.",
+    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    url: "https://mind-screen-ai.vercel.app/",
+    linkText: "mind-screen-ai.vercel.app"
+  },
+  {
+    icon: <HeartPulse className="w-5 h-5" />,
+    name: "Kiddo Psychiatry",
+    role: "Lead Web Developer",
+    status: "Production",
+    desc: "Specialized digital platform for a physician-led psychiatric practice delivering pediatric mental health care for children, teenagers, and families across Texas.",
+    tags: ["WordPress", "PHP", "SEO", "Healthcare"],
+    url: "https://kiddopsychiatry.com/",
+    linkText: "kiddopsychiatry.com"
+  },
+  {
+    icon: <ShoppingBag className="w-5 h-5" />,
+    name: "Austin Rug Store",
+    role: "Lead Web Developer",
+    status: "Production",
+    desc: "E-commerce platform and digital showroom for a premier physical retail showroom in Austin, Texas, specializing in handmade wool and luxury Oushak rugs.",
+    tags: ["WordPress", "WooCommerce", "PHP", "E-Commerce"],
+    url: "https://www.austinrugstore.com/",
+    linkText: "austinrugstore.com"
+  },
+  {
+    icon: <ShieldCheck className="w-5 h-5" />,
+    name: "RTA Fines",
+    role: "Lead Developer",
+    status: "Production",
+    desc: "Informational portal offering guides, penalty lookups, and appeal procedures for understanding and managing traffic fines under the Roads and Transport Authority in Dubai, UAE.",
+    tags: ["WordPress", "PHP", "SEO", "Elementor"],
+    url: "https://rtafines.com",
+    linkText: "rtafines.com"
+  },
+  {
+    icon: <Newspaper className="w-5 h-5" />,
+    name: "TechABU",
+    role: "Founder & CEO",
+    status: "Production",
+    desc: "Digital media platform founded in 2020 serving programming tutorials, SEO insights, freelancing guides, and modern technology innovation news.",
+    tags: ["WordPress", "PHP", "SEO", "Tailwind CSS"],
+    url: "https://techabu.co",
+    linkText: "techabu.co"
+  },
+  {
+    icon: <Wrench className="w-5 h-5" />,
+    name: "Spot Web Tools Platform",
+    role: "Founder & Lead Developer",
+    status: "Production",
+    desc: "All-in-one digital utility platform by HindukushSoft offering 190+ free web, developer, SEO, text converter, and productivity utilities in one fast web application.",
+    tags: ["React", "TypeScript", "Tailwind CSS", "Kotlin", "Android"],
+    url: "https://app.techabu.co",
+    linkText: "app.techabu.co"
+  },
+  {
+    icon: <Smartphone className="w-5 h-5" />,
+    name: "Spot Web Tools Android App",
+    role: "Lead Mobile Developer",
+    status: "Production - Play Store",
+    desc: "Native Android utility platform bringing 190+ developer utilities, converter tools, and SEO helpers directly to mobile devices.",
+    tags: ["Kotlin", "Jetpack Compose", "Material 3", "Android"],
+    url: "https://play.google.com/store/apps/details?id=com.swt.spotwebtools&hl=en",
+    linkText: "Play Store"
   }
 ];
 
@@ -96,6 +204,13 @@ const getTagSlug = (tag) => {
     "Git": "git",
     "Docker": "docker",
     "Figma": "figma",
+    "WordPress": "wordpress",
+    "WooCommerce": "woocommerce",
+    "Elementor": "elementor",
+    "SEO": "google",
+    "Shopify": "shopify",
+    "E-Commerce": "shopify",
+    "Healthcare": "redux"
   };
   return map[tag] || tag.toLowerCase().replace(/[^a-z0-9]/g, "");
 };
@@ -172,8 +287,11 @@ const ProjectsShowcase = ({ onBack }) => {
             transition={{ duration: 0.5 }}
           >
             <button 
-              onClick={onBack}
-              className="group flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors mb-6 mx-auto md:mx-0"
+              onClick={(e) => {
+                onBack();
+                e.currentTarget.blur();
+              }}
+              className="group flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors mb-6 mx-auto md:mx-0 outline-none select-none"
             >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               Back to Home
@@ -222,7 +340,13 @@ const ProjectsShowcase = ({ onBack }) => {
                     </h3>
                     
                     {project.url && (
-                      <a href={project.url} target="_blank" rel="noopener noreferrer" className="text-lg font-bold text-blue-600 dark:text-blue-500 hover:text-blue-700 transition-colors flex items-center gap-2 relative inline-flex">
+                      <a 
+                        href={project.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        onClick={(e) => e.currentTarget.blur()}
+                        className="text-lg font-bold text-blue-600 dark:text-blue-500 hover:text-blue-700 transition-colors flex items-center gap-2 relative inline-flex outline-none select-none"
+                      >
                         {project.linkText}
                         <ExternalLink className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
                       </a>
