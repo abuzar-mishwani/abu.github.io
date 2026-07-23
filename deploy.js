@@ -88,7 +88,7 @@ try {
   execSync("git add .", { stdio: "inherit" });
 
   const commitMessage = `Deploy portfolio - ${new Date().toISOString()}`;
-  execSync(`git commit -m "${commitMessage}"`, { stdio: "inherit" });
+  execSync(`git commit --allow-empty -m "${commitMessage}"`, { stdio: "inherit" });
 
   execSync("git push origin main --force", { stdio: "inherit" });
 
