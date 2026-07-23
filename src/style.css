@@ -283,9 +283,15 @@ body.loading {
   border-radius: 50% 50% 0 0;
 }
 
-.btn-wave-hover:hover::before {
-  top: -10%;
-  border-radius: 0;
+@media (hover: hover) {
+  .btn-wave-hover:hover::before {
+    top: -10%;
+    border-radius: 0;
+  }
+
+  .btn-wave-hover:hover {
+    color: hsl(var(--background));
+  }
 }
 
 .btn-wave-hover > * {
@@ -293,9 +299,6 @@ body.loading {
   z-index: 1;
 }
 
-.btn-wave-hover:hover {
-  color: hsl(var(--background));
-}
 
 /* ========== HERO GREETING ========== */
 .hero-greeting {

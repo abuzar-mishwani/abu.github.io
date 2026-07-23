@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { ArrowLeft, Sun, Moon, Download } from "lucide-react";
 import { Button } from "./ui/button";
 
@@ -41,25 +42,37 @@ const Navbar = ({ activeView, onBack, onThemeToggle, theme }) => {
 
         {/* Right Controls */}
         <div className="flex items-center gap-3">
-          <Button
-            variant="outline"
-            onClick={handleDownload}
-            className="h-10 w-10 sm:w-auto p-0 sm:px-5 rounded-full sm:gap-2 shadow-sm border-border bg-background font-extrabold transition-all duration-300 group btn-wave-hover shrink-0 flex items-center justify-center"
+          <button
+            type="button"
+            onClick={(e) => {
+              handleDownload();
+              e.currentTarget.blur();
+            }}
+            className="h-10 w-10 sm:w-auto p-0 sm:px-5 rounded-full sm:gap-2 shadow-sm border border-border bg-background font-extrabold transition-all duration-300 group btn-wave-hover shrink-0 flex items-center justify-center outline-none select-none"
           >
             <Download size={15} className="relative z-10 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:scale-110 group-hover:text-background" />
             <span className="relative z-10 hidden sm:inline group-hover:text-background transition-colors duration-300">Download Resume</span>
-          </Button>
+          </button>
 
-          <Button
-            variant="outline"
-            onClick={onThemeToggle}
+          <button
+            type="button"
+            onClick={(e) => {
+              onThemeToggle();
+              e.currentTarget.blur();
+            }}
             aria-label="Toggle theme"
-            className="h-10 w-10 p-0 rounded-full shadow-sm border-border bg-background transition-all hover:bg-secondary group shrink-0 flex items-center justify-center"
+            className="h-10 w-10 p-0 rounded-full shadow-sm border border-border bg-background transition-all [media(hover:hover)]:hover:bg-secondary active:scale-90 flex items-center justify-center outline-none select-none shrink-0"
           >
-            <div className="transition-transform duration-500 group-hover:rotate-180 flex items-center justify-center">
+            <motion.div
+              key={theme}
+              initial={{ rotate: -90, scale: 0.7, opacity: 0 }}
+              animate={{ rotate: 0, scale: 1, opacity: 1 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="flex items-center justify-center pointer-events-none"
+            >
               {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-            </div>
-          </Button>
+            </motion.div>
+          </button>
         </div>
       </div>
     </nav>

@@ -10,7 +10,8 @@ import {
   Star,
   CheckCircle2,
   ArrowLeft,
-  Download
+  Download,
+  Code2
 } from "lucide-react";
 
 const projects = [
@@ -32,9 +33,7 @@ const projects = [
     desc: "The #1 GPA Calculator app globally on Android. Custom grading scales, semester planning, target GPA forecasting, and professional PDF reporting.",
     tags: ["Kotlin", "Jetpack Compose", "Material 3"],
     url: "https://play.google.com/store/apps/details?id=advc.calc.easygpacalculator&hl=en",
-    linkText: "Play Store",
-    stat: "50,000+ Downloads",
-    statIcon: <Download className="w-3.5 h-3.5" />
+    linkText: "Play Store"
   },
   {
     icon: <Utensils className="w-5 h-5" />,
@@ -67,6 +66,39 @@ const projects = [
     linkText: "inventro.hindukushsoft.com"
   }
 ];
+
+const getTagSlug = (tag) => {
+  const map = {
+    "React": "react",
+    "React.js": "react",
+    "TypeScript": "typescript",
+    "JavaScript": "javascript",
+    "Laravel": "laravel",
+    "MySQL": "mysql",
+    "Vite": "vite",
+    "TailwindCSS": "tailwindcss",
+    "Tailwind CSS": "tailwindcss",
+    "Tailwind": "tailwindcss",
+    "Node.js": "nodedotjs",
+    "Next.js": "nextdotjs",
+    "Payload CMS": "payload",
+    "PHP": "php",
+    "Kotlin": "kotlin",
+    "Jetpack Compose": "jetpackcompose",
+    "Material 3": "materialdesign",
+    "Java": "openjdk",
+    "Python": "python",
+    "MongoDB": "mongodb",
+    "PostgreSQL": "postgresql",
+    "SQLite": "sqlite",
+    "Electron": "electron",
+    "Android": "android",
+    "Git": "git",
+    "Docker": "docker",
+    "Figma": "figma",
+  };
+  return map[tag] || tag.toLowerCase().replace(/[^a-z0-9]/g, "");
+};
 
 const StaggeredLetters = ({ text, delay = 0, className }) => {
   const words = text.split(" ");
@@ -185,7 +217,7 @@ const ProjectsShowcase = ({ onBack }) => {
                     <div className="w-12 h-12 rounded-full border border-border bg-background shadow-sm flex items-center justify-center text-foreground mb-6">
                       {project.icon}
                     </div>
-                    <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">
+                    <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-4">
                       {project.name}
                     </h3>
                     
@@ -199,12 +231,12 @@ const ProjectsShowcase = ({ onBack }) => {
 
                   {/* Right Column: Details & Tech */}
                   <div className="w-full md:w-2/3 max-w-none text-left">
-                    <div className="flex flex-wrap items-center gap-3 mb-6">
-                      <div className="px-3 py-1 rounded-full border border-blue-500/20 bg-blue-500/10 text-blue-600 dark:text-blue-400 text-sm font-semibold tracking-wide uppercase">
+                    <div className="flex flex-wrap items-center gap-2.5 mb-6">
+                      <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-600 dark:bg-blue-500 text-white font-sans text-xs font-semibold uppercase tracking-wide shadow-sm">
                         {project.role}
                       </div>
-                      <div className="px-3 py-1 rounded-full border border-green-500/20 bg-green-500/10 text-green-600 dark:text-green-400 text-sm font-semibold tracking-wide uppercase flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                      <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-foreground text-background font-sans text-xs font-semibold uppercase tracking-wide shadow-sm">
+                        <span className="w-1.5 h-1.5 rounded-full bg-background animate-pulse" />
                         {project.status}
                       </div>
                     </div>
@@ -214,19 +246,21 @@ const ProjectsShowcase = ({ onBack }) => {
                     </p>
 
                     <div className="flex flex-wrap items-center gap-2 mb-8">
-                      {project.tags.map((tag) => (
-                        <span key={tag} className="px-4 py-1.5 rounded-full border border-border bg-background text-sm font-medium text-foreground shadow-sm">
-                          {tag}
-                        </span>
-                      ))}
+                      {project.tags.map((tag) => {
+                        const iconSlug = getTagSlug(tag);
+                        return (
+                          <span key={tag} className="px-3.5 py-1.5 rounded-full border border-border bg-secondary/40 dark:bg-secondary/40 text-xs font-normal text-foreground shadow-xs inline-flex items-center gap-2 hover:border-blue-500/50 transition-colors">
+                            <img 
+                              src={`https://cdn.simpleicons.org/${iconSlug}`} 
+                              alt={tag} 
+                              className="w-3.5 h-3.5 object-contain shrink-0" 
+                              onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                            />
+                            {tag}
+                          </span>
+                        );
+                      })}
                     </div>
-
-                    {project.stat && (
-                      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-yellow-500/30 bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 font-semibold text-sm">
-                        {project.statIcon || <Star className="w-3.5 h-3.5 fill-yellow-500" />}
-                        {project.stat}
-                      </div>
-                    )}
                   </div>
                 </motion.div>
               );

@@ -182,14 +182,14 @@ const EducationSection = ({ onBack }) => {
 
                   {/* Right Column: Degree & Details */}
                   <div className="w-full md:w-2/3 max-w-none text-left">
-                    <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">
+                    <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-4">
                       {edu.degree}
                     </h3>
                     
                     {edu.inProgress && (
-                      <div className="inline-flex items-center gap-2 mb-8 px-3 py-1 rounded-full border border-yellow-500/20 bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 text-sm font-semibold tracking-wide uppercase">
-                         <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 animate-pulse" />
-                         In Progress
+                      <div className="inline-flex items-center gap-2 mb-8 px-3.5 py-1 rounded-full bg-foreground text-background font-sans text-xs font-semibold uppercase tracking-wide shadow-sm">
+                        <span className="w-1.5 h-1.5 rounded-full bg-background animate-pulse" />
+                        In Progress
                       </div>
                     )}
 
@@ -217,7 +217,7 @@ const EducationSection = ({ onBack }) => {
                 <div className="w-12 h-12 rounded-full border border-border bg-background shadow-sm flex items-center justify-center text-foreground mb-6">
                   <Award className="w-5 h-5" />
                 </div>
-                <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+                <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">
                   Certifications
                 </h3>
               </div>

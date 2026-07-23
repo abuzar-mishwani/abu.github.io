@@ -193,7 +193,7 @@ const ExperienceTimeline = ({ onBack }) => {
 
                   {/* Right Column: Role & Points */}
                   <div className="w-full md:w-2/3 max-w-none text-left">
-                    <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-8">
+                    <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-8">
                       {exp.role}
                     </h3>
                     <ul className="space-y-6">

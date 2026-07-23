@@ -192,7 +192,7 @@ const SkillsGrid = ({ onBack }) => {
                 <div className="w-12 h-12 rounded-full border border-border bg-background shadow-sm flex items-center justify-center text-foreground mb-6">
                   <Code2 className="w-5 h-5" />
                 </div>
-                <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+                <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">
                   Engineering Stack
                 </h3>
               </div>
@@ -234,7 +234,7 @@ const SkillsGrid = ({ onBack }) => {
                 <div className="w-12 h-12 rounded-full border border-border bg-background shadow-sm flex items-center justify-center text-foreground mb-6">
                   <Briefcase className="w-5 h-5" />
                 </div>
-                <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+                <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">
                   Executive Leadership
                 </h3>
               </div>
@@ -263,7 +263,7 @@ const SkillsGrid = ({ onBack }) => {
                 <div className="w-12 h-12 rounded-full border border-border bg-background shadow-sm flex items-center justify-center text-foreground mb-6">
                   <TrendingUp className="w-5 h-5" />
                 </div>
-                <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+                <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">
                   Growth & SEO
                 </h3>
               </div>

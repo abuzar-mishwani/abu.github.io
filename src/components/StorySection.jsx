@@ -312,7 +312,7 @@ const StorySection = ({ onBack }) => {
                     <div className="w-12 h-12 rounded-full border border-border bg-background shadow-sm flex items-center justify-center text-foreground mb-6">
                       {chapter.icon}
                     </div>
-                    <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+                    <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">
                       {chapter.title}
                     </h3>
                   </div>

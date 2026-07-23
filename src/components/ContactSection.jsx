@@ -204,7 +204,7 @@ const ContactSection = ({ onBack }) => {
               
               {/* Left Column: Form */}
               <div className="w-full lg:w-1/2 flex flex-col justify-between relative z-20 bg-card/30 backdrop-blur-md border border-border/50 p-8 md:p-10 rounded-3xl shadow-sm">
-                <h3 className="text-3xl font-bold tracking-tight text-foreground mb-8">
+                <h3 className="text-3xl font-extrabold tracking-tight text-foreground mb-8">
                     Send a Message
                   </h3>
                   
