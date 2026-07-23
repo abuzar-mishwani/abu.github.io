@@ -161,7 +161,7 @@ const HeroGreeting = ({ onNavigate }) => {
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
 
   return (
-    <section className="flex flex-col justify-center pt-2 pb-40 md:pt-6 md:pb-24 w-full relative overflow-hidden">
+    <section className="flex flex-col justify-center pt-16 pb-40 md:pt-6 md:pb-24 w-full relative overflow-hidden">
       
       {/* Ambient Background Gradients */}
       <div className="absolute inset-0 pointer-events-none -z-10">
@@ -178,7 +178,7 @@ const HeroGreeting = ({ onNavigate }) => {
         <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-24 md:gap-20 lg:gap-24">
           
           {/* Left Column: Narrative Introduction (Centered on mobile, Left on desktop) */}
-          <div className="flex flex-col items-center md:items-start justify-center md:justify-start text-center md:text-left w-full md:w-auto flex-1 max-w-[500px] min-h-[85vh] md:min-h-0 pt-4 pb-12 md:pb-0">
+          <div className="flex flex-col items-center md:items-start justify-start md:justify-start text-center md:text-left w-full md:w-auto flex-1 max-w-[500px] min-h-[100vh] md:min-h-0 pt-[18vh] md:pt-4 pb-12 md:pb-0">
             
             {/* Avatar with Physical Layered Stack Effect */}
             <motion.div 
