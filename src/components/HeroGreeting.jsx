@@ -306,7 +306,7 @@ const HeroGreeting = ({ onNavigate }) => {
                 whileInView={{ height: "100%" }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2, duration: 1.0, ease: "easeInOut" }}
-                className="hidden md:block absolute left-[15px] top-4 bottom-4 w-[2px] bg-gradient-to-b from-blue-600/50 via-border to-transparent z-0"
+                className="absolute left-[15px] top-4 bottom-4 w-[2px] bg-gradient-to-b from-blue-600/50 via-border to-transparent z-0"
               />
 
               <div className="flex flex-col gap-4">
@@ -323,18 +323,18 @@ const HeroGreeting = ({ onNavigate }) => {
                     }}
                     whileHover={{ scale: 1.01 }}
                     whileTap={{ scale: 0.98 }}
-                    className="group relative flex items-center gap-4 cursor-pointer z-10 pl-4 md:pl-[64px] pr-4 py-3 rounded-2xl [media(hover:hover)]:hover:bg-card/40 transition-colors border border-transparent [media(hover:hover)]:hover:border-border/50 text-left outline-none select-none"
+                    className="group relative flex items-center gap-4 cursor-pointer z-10 pl-[64px] pr-4 py-3 rounded-2xl [media(hover:hover)]:hover:bg-card/40 transition-colors border border-transparent [media(hover:hover)]:hover:border-border/50 text-left outline-none select-none"
                   >
                     {/* Timeline Node Point */}
-                    <div className="hidden md:block absolute left-[9px] w-[14px] h-[14px] rounded-full border-2 border-background bg-border group-hover:bg-blue-600 group-hover:scale-150 group-hover:shadow-[0_0_10px_rgba(37,99,235,0.5)] transition-all duration-300 z-10" />
+                    <div className="absolute left-[9px] w-[14px] h-[14px] rounded-full border-2 border-background bg-border group-hover:bg-blue-600 group-hover:scale-150 group-hover:shadow-[0_0_10px_rgba(37,99,235,0.5)] transition-all duration-300 z-10" />
                     
                     {/* Icon Box */}
-                    <div className="relative md:absolute md:left-[36px] shrink-0 w-10 h-10 rounded-xl bg-card border border-border/60 flex items-center justify-center text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-500 group-hover:border-blue-600/30 transition-all shadow-sm z-20">
+                    <div className="absolute left-[36px] shrink-0 w-10 h-10 rounded-xl bg-card border border-border/60 flex items-center justify-center text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-500 group-hover:border-blue-600/30 transition-all shadow-sm z-20">
                       {React.cloneElement(item.icon, { className: "w-[18px] h-[18px]" })}
                     </div>
 
                     {/* Card Text Content */}
-                    <div className="flex-1 md:ml-[30px]">
+                    <div className="flex-1 ml-[30px]">
                       <h3 className="text-lg font-extrabold tracking-tight text-foreground mb-0.5 group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors flex items-center gap-2">
                         {item.title}
                         <ArrowRight size={14} className="text-muted-foreground opacity-0 group-hover:opacity-100 transition-all duration-300" />
