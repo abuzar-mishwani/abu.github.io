@@ -165,7 +165,7 @@ const HeroGreeting = ({ onNavigate }) => {
       <div className="w-full max-w-5xl mx-auto px-4 md:px-8 relative z-10">
         
         {/* Editorial Two-Column Layout - Top aligned via items-start */}
-        <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-12 md:gap-20">
+        <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-24 md:gap-20 lg:gap-24">
           
           {/* Left Column: Narrative Introduction (Centered on mobile, Left on desktop) */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left w-full md:w-auto flex-1 max-w-[500px] pt-4">
