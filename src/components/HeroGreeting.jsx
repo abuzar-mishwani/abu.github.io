@@ -178,7 +178,7 @@ const HeroGreeting = ({ onNavigate }) => {
         <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-24 md:gap-20 lg:gap-24">
           
           {/* Left Column: Narrative Introduction (Centered on mobile, Left on desktop) */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left w-full md:w-auto flex-1 max-w-[500px] pt-4">
+          <div className="flex flex-col items-center md:items-start justify-center md:justify-start text-center md:text-left w-full md:w-auto flex-1 max-w-[500px] min-h-[85vh] md:min-h-0 pt-4 pb-12 md:pb-0">
             
             {/* Avatar with Physical Layered Stack Effect */}
             <motion.div 
