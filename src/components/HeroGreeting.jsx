@@ -82,7 +82,7 @@ const AnimatedText = ({ text, className, delay = 0 }) => {
 
 // Component for letter-by-letter stagger animation
 const StaggeredLetters = ({ text, delay = 0, className }) => {
-  const letters = Array.from(text);
+  const words = text.split(" ");
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -97,10 +97,15 @@ const StaggeredLetters = ({ text, delay = 0, className }) => {
 
   return (
     <motion.span variants={container} initial="hidden" animate="show" className={`inline-block ${className}`}>
-      {letters.map((letter, index) => (
-        <motion.span variants={child} key={index} className="inline-block">
-          {letter === " " ? "\u00A0" : letter}
-        </motion.span>
+      {words.map((word, wordIndex) => (
+        <span key={wordIndex} className="inline-block whitespace-nowrap">
+          {Array.from(word).map((letter, letterIndex) => (
+            <motion.span variants={child} key={letterIndex} className="inline-block">
+              {letter}
+            </motion.span>
+          ))}
+          {wordIndex !== words.length - 1 && <span className="inline-block">&nbsp;</span>}
+        </span>
       ))}
     </motion.span>
   );
@@ -146,7 +151,7 @@ const HeroGreeting = ({ onNavigate }) => {
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
 
   return (
-    <section className="flex flex-col justify-center pt-2 pb-20 md:pt-6 md:pb-24 w-full relative overflow-hidden">
+    <section className="flex flex-col justify-center pt-2 pb-40 md:pt-6 md:pb-24 w-full relative overflow-hidden">
       
       {/* Ambient Background Gradients */}
       <div className="absolute inset-0 pointer-events-none -z-10">
@@ -260,7 +265,7 @@ const HeroGreeting = ({ onNavigate }) => {
                 { icon: <Mail className="w-4 h-4" />, href: "mailto:ceo@hindukushsoft.com", label: "Email" },
                 { icon: <Github className="w-4 h-4" />, href: "https://github.com/abuzar-mishwani", label: "GitHub" },
                 { icon: <Facebook className="w-4 h-4" />, href: "https://facebook.com/itsabuzarr", label: "Facebook" },
-                { icon: <Instagram className="w-4 h-4" />, href: "https://instagram.com/itsabuzarr", label: "Instagram" }
+                { icon: <Instagram className="w-4 h-4" />, href: "https://instagram.com/abuzar.mishwani", label: "Instagram" }
               ].map((social, i) => (
                 <a
                   key={i}

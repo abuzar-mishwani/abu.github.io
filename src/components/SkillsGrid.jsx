@@ -80,7 +80,7 @@ const spokenLanguages = [
 ];
 
 const StaggeredLetters = ({ text, delay = 0, className }) => {
-  const letters = Array.from(text);
+  const words = text.split(" ");
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -95,10 +95,15 @@ const StaggeredLetters = ({ text, delay = 0, className }) => {
 
   return (
     <motion.span variants={container} initial="hidden" animate="show" className={`inline-block ${className}`}>
-      {letters.map((letter, index) => (
-        <motion.span variants={child} key={index} className="inline-block">
-          {letter === " " ? "\u00A0" : letter}
-        </motion.span>
+      {words.map((word, wordIndex) => (
+        <span key={wordIndex} className="inline-block whitespace-nowrap">
+          {Array.from(word).map((letter, letterIndex) => (
+            <motion.span variants={child} key={letterIndex} className="inline-block">
+              {letter}
+            </motion.span>
+          ))}
+          {wordIndex !== words.length - 1 && <span className="inline-block">&nbsp;</span>}
+        </span>
       ))}
     </motion.span>
   );
@@ -198,14 +203,18 @@ const SkillsGrid = ({ onBack }) => {
                     <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-4">
                       {category.name}
                     </h4>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2.5">
                       {category.shields.map((shield, i) => (
-                        <img
+                        <div 
                           key={i}
-                          src={shield}
-                          alt="tech badge"
-                          className="h-7 hover:scale-105 transition-transform duration-200 cursor-default rounded-sm"
-                        />
+                          className="relative rounded-[3px] ring-1 ring-border/40 hover:ring-primary/40 transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 overflow-hidden flex items-center justify-center bg-[#0d1117]"
+                        >
+                          <img
+                            src={shield}
+                            alt="tech badge"
+                            className="h-7 cursor-default"
+                          />
+                        </div>
                       ))}
                     </div>
                   </div>

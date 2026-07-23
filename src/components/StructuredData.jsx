@@ -37,7 +37,7 @@ const StructuredData = () => {
     "sameAs": [
       "https://www.facebook.com/abuzar.mishwani/",
       "https://www.x.com/itsabuzarr",
-      "https://www.instagram.com/mishwani7/",      
+      "https://www.instagram.com/abuzar.mishwani/",      
       "https://www.linkedin.com/in/mishwani7/",
       "https://github.com/abuzar-mishwani",
       "https://mishwani.is-a.dev/",

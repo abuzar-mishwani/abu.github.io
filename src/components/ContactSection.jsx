@@ -49,10 +49,10 @@ const socialLinks = [
   },
 
   {
-    href: "https://www.instagram.com/mishwani7",
+    href: "https://www.instagram.com/abuzar.mishwani",
     icon: <Instagram className="w-5 h-5" />,
     platform: "Instagram",
-    handle: "@mishwani7",
+    handle: "@abuzar.mishwani",
   },
   {
     href: "https://www.facebook.com/abuzar.mishwani/",
@@ -69,7 +69,7 @@ const socialLinks = [
 ];
 
 const StaggeredLetters = ({ text, delay = 0, className }) => {
-  const letters = Array.from(text);
+  const words = text.split(" ");
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -84,10 +84,15 @@ const StaggeredLetters = ({ text, delay = 0, className }) => {
 
   return (
     <motion.span variants={container} initial="hidden" animate="show" className={`inline-block ${className}`}>
-      {letters.map((letter, index) => (
-        <motion.span variants={child} key={index} className="inline-block">
-          {letter === " " ? "\u00A0" : letter}
-        </motion.span>
+      {words.map((word, wordIndex) => (
+        <span key={wordIndex} className="inline-block whitespace-nowrap">
+          {Array.from(word).map((letter, letterIndex) => (
+            <motion.span variants={child} key={letterIndex} className="inline-block">
+              {letter}
+            </motion.span>
+          ))}
+          {wordIndex !== words.length - 1 && <span className="inline-block">&nbsp;</span>}
+        </span>
       ))}
     </motion.span>
   );
