@@ -32,9 +32,9 @@ try {
   console.log("📂 Cloning repository...");
   execSync(`git clone "${REPO_URL}" "${TEMP_FOLDER}"`, { stdio: "inherit" });
 
-  // Switch to main branch (or create it)
-  console.log("🌿 Switching to main branch...");
-  execSync("git checkout -B main", { cwd: TEMP_FOLDER, stdio: "inherit" });
+  // Switch to gh-pages branch (or create it)
+  console.log("🌿 Switching to gh-pages branch...");
+  execSync("git checkout -B gh-pages", { cwd: TEMP_FOLDER, stdio: "inherit" });
 
   // Copy dist files to temp folder
   console.log("📋 Copying build files...");
@@ -94,7 +94,7 @@ try {
   const commitMessage = `Deploy portfolio - ${new Date().toISOString()}`;
   execSync(`git commit --allow-empty -m "${commitMessage}"`, { stdio: "inherit" });
 
-  execSync("git push origin main --force", { stdio: "inherit" });
+  execSync("git push origin gh-pages --force", { stdio: "inherit" });
 
   // Clean up
   process.chdir("..");

@@ -1,15 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Sun, Moon, Download } from "lucide-react";
-import { Button } from "./ui/button";
+import { Sun, Moon, Download } from "lucide-react";
+import { Tooltip as AntTooltip, ConfigProvider, theme as antdTheme } from "antd";
 
 const Navbar = ({ activeView, onBack, onThemeToggle, theme }) => {
   const [scrolled, setScrolled] = useState(false);
+  const [canHover, setCanHover] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    const media = window.matchMedia("(hover: hover)");
+    setCanHover(media.matches);
+    const listener = (e) => setCanHover(e.matches);
+    media.addEventListener("change", listener);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      media.removeEventListener("change", listener);
+    };
   }, []);
 
   const handleDownload = () => {
@@ -41,18 +51,30 @@ const Navbar = ({ activeView, onBack, onThemeToggle, theme }) => {
         </a>
 
         {/* Right Controls */}
-        <div className="flex items-center gap-3">
-          <button
-            type="button"
-            onClick={(e) => {
-              handleDownload();
-              e.currentTarget.blur();
+        <div className="flex items-center gap-1">
+          <ConfigProvider
+            theme={{
+              algorithm: theme === "dark" ? antdTheme.darkAlgorithm : antdTheme.defaultAlgorithm,
+              token: {
+                fontFamily: "'Inter Tight', var(--font-sans), sans-serif",
+                fontWeightStrong: 600,
+              },
             }}
-            className="h-10 w-10 sm:w-auto p-0 sm:px-5 rounded-full sm:gap-2 shadow-sm border border-border bg-background font-extrabold transition-all duration-300 group btn-wave-hover shrink-0 flex items-center justify-center outline-none select-none"
           >
-            <Download size={15} className="relative z-10 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:scale-110 group-hover:text-background" />
-            <span className="relative z-10 hidden sm:inline group-hover:text-background transition-colors duration-300">Download Resume</span>
-          </button>
+            <AntTooltip trigger={canHover ? ["hover"] : []} title="Download Resume" placement="bottom" arrow={{ pointAtCenter: true }}>
+              <button
+                type="button"
+                onClick={(e) => {
+                  handleDownload();
+                  e.currentTarget.blur();
+                }}
+                aria-label="Download Resume"
+                className="h-10 w-10 p-0 rounded-xl text-muted-foreground hover:text-foreground [media(hover:hover)]:hover:bg-secondary/60 active:scale-90 flex items-center justify-center outline-none select-none shrink-0 transition-all duration-200"
+              >
+                <Download size={18} className="shrink-0 transition-transform duration-200" />
+              </button>
+            </AntTooltip>
+          </ConfigProvider>
 
           <button
             type="button"
@@ -61,13 +83,13 @@ const Navbar = ({ activeView, onBack, onThemeToggle, theme }) => {
               e.currentTarget.blur();
             }}
             aria-label="Toggle theme"
-            className="h-10 w-10 p-0 rounded-full shadow-sm border border-border bg-background transition-all [media(hover:hover)]:hover:bg-secondary active:scale-90 flex items-center justify-center outline-none select-none shrink-0"
+            className="h-10 w-10 p-0 rounded-xl text-muted-foreground hover:text-foreground [media(hover:hover)]:hover:bg-secondary/60 active:scale-90 flex items-center justify-center outline-none select-none shrink-0 transition-all duration-200"
           >
             <motion.div
               key={theme}
               initial={{ rotate: -90, scale: 0.7, opacity: 0 }}
               animate={{ rotate: 0, scale: 1, opacity: 1 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
               className="flex items-center justify-center pointer-events-none"
             >
               {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
