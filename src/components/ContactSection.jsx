@@ -157,7 +157,7 @@ const ContactSection = ({ onBack }) => {
       <div className="w-full max-w-5xl mx-auto px-4 md:px-8 relative z-10">
         
         {/* Header Section */}
-        <div className="text-center md:text-left mb-16 md:mb-24">
+        <div className="text-center md:text-left mb-10 md:mb-14">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -189,7 +189,7 @@ const ContactSection = ({ onBack }) => {
           whileInView={{ opacity: 1, scaleX: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent mb-16 md:mb-24 origin-center"
+          className="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent my-10 md:my-14 origin-center"
         />
 
         {/* Clean Editorial Layout */}

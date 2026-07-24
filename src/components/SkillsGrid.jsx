@@ -160,7 +160,7 @@ const SkillsGrid = ({ onBack }) => {
       <div className="w-full max-w-5xl mx-auto px-4 md:px-8 relative z-10">
 
         {/* Header Section */}
-        <div className="text-center md:text-left mb-16 md:mb-24">
+        <div className="text-center md:text-left mb-10 md:mb-14">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -168,8 +168,11 @@ const SkillsGrid = ({ onBack }) => {
             transition={{ duration: 0.5 }}
           >
             <button
-              onClick={onBack}
-              className="group flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors mb-6 mx-auto md:mx-0"
+              onClick={(e) => {
+                onBack();
+                e.currentTarget.blur();
+              }}
+              className="group flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors mb-6 mx-auto md:mx-0 outline-none select-none"
             >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               Back to Home
@@ -191,7 +194,7 @@ const SkillsGrid = ({ onBack }) => {
           whileInView={{ opacity: 1, scaleX: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent mb-16 md:mb-24 origin-center"
+          className="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent my-10 md:my-14 origin-center"
         />
 
         {/* Clean Editorial Layout */}
