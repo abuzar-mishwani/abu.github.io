@@ -79,7 +79,12 @@ const FloatingNavDock = ({ activeView, onNavigate, theme }) => {
                       )}
                       <Icon className={`w-4 h-4 relative z-10 shrink-0 transition-transform duration-200 ${isActive ? "scale-105" : ""}`} />
                       <span className={`relative z-10 font-bold ${isActive ? "inline-block" : "hidden"}`}>
-                        {item.label}
+                        <span className="sm:hidden">
+                          {item.label.length > 7 ? `${item.label.slice(0, 7)}...` : item.label}
+                        </span>
+                        <span className="hidden sm:inline">
+                          {item.label}
+                        </span>
                       </span>
                     </button>
                   </AntTooltip>
