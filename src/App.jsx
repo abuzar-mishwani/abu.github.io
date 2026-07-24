@@ -11,6 +11,7 @@ import SkillsGrid from "./components/SkillsGrid";
 import EducationSection from "./components/EducationSection";
 import ContactSection from "./components/ContactSection";
 import StructuredData from "./components/StructuredData";
+import FloatingNavDock from "./components/FloatingNavDock";
 
 const sectionComponents = {
   story: StorySection,
@@ -101,8 +102,15 @@ const App = () => {
         </SectionViewer>
       </main>
 
+      {/* Desktop Floating Navigation Dock */}
+      <FloatingNavDock
+        activeView={activeView}
+        onNavigate={handleNavigate}
+        theme={theme}
+      />
+
       {/* Footer */}
-      <footer className="w-full flex justify-center pb-8 pt-12">
+      <footer className={`w-full flex justify-center pt-12 transition-all duration-300 ${activeView === "home" ? "pb-10" : "pb-28 sm:pb-32"}`}>
         <div className="flex items-center gap-1.5 text-[13px] md:text-sm font-mono transition-all hover:scale-105 cursor-default bg-secondary/30 border border-border/50 shadow-sm px-5 py-2.5 rounded-full">
           <span className="text-muted-foreground font-medium">&lt;</span>
           <span className="text-foreground font-medium">built_with</span>
