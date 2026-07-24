@@ -290,15 +290,14 @@ const ContactSection = ({ onBack }) => {
                         href={link.href} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        title={link.handle}
                         className="flex items-center gap-4 p-4 rounded-2xl border border-border bg-background transition-all group btn-wave-hover"
                       >
-                        <div className="w-10 h-10 shrink-0 rounded-full bg-secondary flex items-center justify-center text-foreground transition-colors relative z-10 group-hover:bg-background/20 group-hover:text-background dark:group-hover:text-background">
+                        <div className="w-10 h-10 shrink-0 rounded-full bg-secondary flex items-center justify-center text-foreground transition-colors relative z-10">
                           {link.icon}
                         </div>
                         <div className="min-w-0 relative z-10">
-                          <div className="text-sm font-bold text-foreground transition-colors group-hover:text-background dark:group-hover:text-background">{link.platform}</div>
-                          <div className="text-xs font-semibold text-muted-foreground truncate transition-colors group-hover:text-background/80 dark:group-hover:text-background/80">{link.handle}</div>
+                          <div className="text-sm font-bold text-foreground transition-colors">{link.platform}</div>
+                          <div className="text-xs font-semibold text-muted-foreground truncate transition-colors">{link.handle}</div>
                         </div>
                       </a>
                     ))}
@@ -314,11 +313,10 @@ const ContactSection = ({ onBack }) => {
                         href={link.href} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        title={link.handle}
                         className="flex items-center gap-2 px-5 py-3 rounded-xl border border-border bg-background transition-all group btn-wave-hover"
                       >
-                        <span className="text-muted-foreground transition-colors relative z-10 group-hover:text-background dark:group-hover:text-background">{link.icon}</span>
-                        <span className="text-sm font-bold text-foreground transition-colors relative z-10 group-hover:text-background dark:group-hover:text-background">{link.platform}</span>
+                        <span className="text-muted-foreground transition-colors relative z-10">{link.icon}</span>
+                        <span className="text-sm font-bold text-foreground transition-colors relative z-10">{link.platform}</span>
                       </a>
                     ))}
                   </div>
@@ -328,20 +326,19 @@ const ContactSection = ({ onBack }) => {
                   <h4 className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-6">Phone Numbers</h4>
                   <div className="flex flex-col gap-3">
                     {[
-                      { phone: "+92 322 9953031", icon: <img src="/images/whatsapp-128-svgrepo-com.svg" alt="WhatsApp" className="w-5 h-5 dark:invert group-hover:invert dark:group-hover:invert-0 opacity-70 group-hover:opacity-100 transition-all" /> },
-                      { phone: "+92 306 2169608", icon: <img src="/images/whatsapp-business-svgrepo-com.svg" alt="WhatsApp Business" className="w-5 h-5 dark:invert group-hover:invert dark:group-hover:invert-0 opacity-70 group-hover:opacity-100 transition-all" /> },
+                      { phone: "+92 322 9953031", icon: <img src="/images/whatsapp-128-svgrepo-com.svg" alt="WhatsApp" className="w-5 h-5 dark:invert opacity-70 transition-all" /> },
+                      { phone: "+92 306 2169608", icon: <img src="/images/whatsapp-business-svgrepo-com.svg" alt="WhatsApp Business" className="w-5 h-5 dark:invert opacity-70 transition-all" /> },
                       { phone: "+92 345 2097245", icon: <Phone className="w-4 h-4" /> }
                     ].map((item, i) => (
                       <a 
                         key={i} 
-                        href={`tel:${item.phone.replace(/\\s+/g, '')}`} 
-                        title={item.phone}
+                        href={`tel:${item.phone.replace(/\s+/g, '')}`} 
                         className="flex items-center gap-4 px-5 py-3 rounded-xl border border-border bg-background transition-all group btn-wave-hover"
                       >
-                        <div className="w-8 h-8 shrink-0 rounded-full bg-secondary flex items-center justify-center text-muted-foreground transition-colors relative z-10 group-hover:bg-background/20 group-hover:text-background dark:group-hover:text-background">
+                        <div className="w-8 h-8 shrink-0 rounded-full bg-secondary flex items-center justify-center text-muted-foreground transition-colors relative z-10">
                           {item.icon}
                         </div>
-                        <span className="text-sm font-bold tracking-wider text-foreground transition-colors relative z-10 group-hover:text-background dark:group-hover:text-background">{item.phone}</span>
+                        <span className="text-sm font-bold tracking-wider text-foreground transition-colors relative z-10">{item.phone}</span>
                       </a>
                     ))}
                   </div>

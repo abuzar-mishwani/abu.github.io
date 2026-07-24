@@ -283,23 +283,20 @@ body.loading {
   border-radius: 50% 50% 0 0;
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .btn-wave-hover:hover::before {
     top: -10%;
     border-radius: 0;
   }
 
-  .btn-wave-hover:hover {
+  .btn-wave-hover:hover,
+  .btn-wave-hover:hover * {
     color: hsl(var(--background));
   }
 
-  .dark .btn-wave-hover:hover {
-    color: hsl(var(--foreground));
+  .btn-wave-hover:hover .bg-secondary {
+    background-color: hsl(var(--background) / 0.15);
   }
-}
-
-.dark .btn-wave-hover::before {
-  background: hsl(var(--secondary));
 }
 
 .btn-wave-hover > * {

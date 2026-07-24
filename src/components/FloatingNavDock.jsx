@@ -43,7 +43,7 @@ const FloatingNavDock = ({ activeView, onNavigate, theme }) => {
           animate={{ x: "-50%", y: 0, opacity: 1, scale: 1 }}
           exit={{ x: "-50%", y: 80, opacity: 0, scale: 0.95 }}
           transition={{ type: "spring", stiffness: 260, damping: 25 }}
-          className="fixed bottom-3 sm:bottom-6 left-1/2 z-50 flex items-center max-w-[94vw] sm:max-w-none"
+          className="fixed bottom-7 sm:bottom-8 left-1/2 z-50 flex items-center max-w-[94vw] sm:max-w-none"
         >
           <ConfigProvider
             theme={{

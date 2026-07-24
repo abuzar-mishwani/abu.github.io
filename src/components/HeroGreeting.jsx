@@ -283,7 +283,7 @@ const HeroGreeting = ({ onNavigate }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={(e) => e.currentTarget.blur()}
-                  className="w-10 h-10 shrink-0 rounded-full border border-border bg-transparent flex items-center justify-center text-muted-foreground shadow-sm hover:shadow-md group [media(hover:hover)]:btn-wave-hover outline-none select-none"
+                  className="w-10 h-10 shrink-0 rounded-full border border-border bg-transparent flex items-center justify-center text-muted-foreground shadow-sm hover:shadow-md group btn-wave-hover outline-none select-none"
                 >
                   <span className="relative z-10 transition-transform duration-300 group-hover:scale-110">
                     {social.icon}
