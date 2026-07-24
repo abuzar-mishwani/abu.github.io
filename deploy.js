@@ -95,11 +95,22 @@ try {
     execSync(`rmdir /s /q "${TEMP_FOLDER}"`, { stdio: "inherit" });
   }
 
-  // Push source code changes to main branch cleanly without modifying root index.html
-  console.log("📤 Committing and pushing source code to main branch...");
+  // Update root production build for GitHub Pages serving from main
+  console.log("📋 Updating root production build for GitHub Pages...");
+  execSync("xcopy /e /i /h /y dist\\assets\\* assets", { stdio: "inherit" });
+  fs.copyFileSync("dist/index.html", "index.html");
+
+  console.log("📤 Committing and pushing source and production build to main...");
   execSync("git add .", { stdio: "inherit" });
   execSync(`git commit --allow-empty -m "Deploy portfolio - ${new Date().toISOString()}"`, { stdio: "inherit" });
   execSync("git push origin main --force", { stdio: "inherit" });
+
+  // Restore local index.html to /src/main.jsx for local dev (npm run dev)
+  console.log("🔄 Restoring local index.html for live dev (npm run dev)...");
+  const devIndexHtml = fs.readFileSync("index.html", "utf-8")
+    .replace(/<script type="module" crossorigin src="\/assets\/index-[^"]+\.js"><\/script>/, '<script type="module" src="/src/main.jsx"></script>')
+    .replace(/<link rel="stylesheet" crossorigin href="\/assets\/index-[^"]+\.css">/, '');
+  fs.writeFileSync("index.html", devIndexHtml, "utf-8");
 
   console.log("✅ Deployment completed successfully!");
   console.log("🌐 Your site should be available at: https://mishwani.is-a.dev/");
