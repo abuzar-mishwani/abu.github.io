@@ -16,9 +16,7 @@ try {
 
   // Check if dist folder exists
   if (!fs.existsSync(DIST_FOLDER)) {
-    console.error(
-      '❌ dist folder not found. Build may have failed.'
-    );
+    console.error('❌ dist folder not found. Build may have failed.');
     process.exit(1);
   }
 
@@ -84,27 +82,46 @@ try {
     console.log("📄 _headers file copied");
   }
 
-  // Add, commit and push
-  console.log("📤 Committing and pushing changes...");
-
+  // Add, commit and push to gh-pages
+  console.log("📤 Committing and pushing changes to gh-pages branch...");
   process.chdir(TEMP_FOLDER);
-
   execSync("git add .", { stdio: "inherit" });
-
-  const commitMessage = `Deploy portfolio - ${new Date().toISOString()}`;
-  execSync(`git commit --allow-empty -m "${commitMessage}"`, { stdio: "inherit" });
-
+  execSync(`git commit --allow-empty -m "Deploy portfolio - ${new Date().toISOString()}"`, { stdio: "inherit" });
   execSync("git push origin gh-pages --force", { stdio: "inherit" });
-
-  // Clean up
   process.chdir("..");
-  execSync(`rmdir /s /q "${TEMP_FOLDER}"`, { stdio: "inherit" });
+
+  // Clean up temp folder
+  if (fs.existsSync(TEMP_FOLDER)) {
+    execSync(`rmdir /s /q "${TEMP_FOLDER}"`, { stdio: "inherit" });
+  }
+
+  // Also update main root with dist output for GitHub Pages serving from main
+  console.log("📋 Updating root production build for GitHub Pages...");
+  execSync("xcopy /e /i /h /y dist\\assets\\* assets", { stdio: "inherit" });
+  fs.copyFileSync("dist/index.html", "index.html");
+
+  console.log("📤 Committing and pushing source and production build to main...");
+  execSync("git add .", { stdio: "inherit" });
+  execSync(`git commit --allow-empty -m "Deploy portfolio - ${new Date().toISOString()}"`, { stdio: "inherit" });
+  execSync("git push origin main --force", { stdio: "inherit" });
+
+  // Restore local index.html to /src/main.jsx for local dev
+  console.log("🔄 Restoring local index.html for live dev (npm run dev)...");
+  const devIndexHtml = fs.readFileSync("index.html", "utf-8")
+    .replace(/<script type="module" crossorigin src="\/assets\/index-[^"]+\.js"><\/script>/, '<script type="module" src="/src/main.jsx"></script>')
+    .replace(/<link rel="stylesheet" crossorigin href="\/assets\/index-[^"]+\.css">/, '');
+  fs.writeFileSync("index.html", devIndexHtml, "utf-8");
 
   console.log("✅ Deployment completed successfully!");
-  console.log(
-    "🌐 Your site should be available at: https://mishwani.is-a.dev/"
-  );
+  console.log("🌐 Your site should be available at: https://mishwani.is-a.dev/");
 } catch (error) {
+  // Restore local index.html on error if needed
+  if (fs.existsSync("dist/index.html")) {
+    const devIndexHtml = fs.readFileSync("dist/index.html", "utf-8")
+      .replace(/<script type="module" crossorigin src="\/assets\/index-[^"]+\.js"><\/script>/, '<script type="module" src="/src/main.jsx"></script>')
+      .replace(/<link rel="stylesheet" crossorigin href="\/assets\/index-[^"]+\.css">/, '');
+    fs.writeFileSync("index.html", devIndexHtml, "utf-8");
+  }
   console.error("❌ Deployment failed:", error.message);
 
   // Clean up on error

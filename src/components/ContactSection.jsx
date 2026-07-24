@@ -271,7 +271,7 @@ const ContactSection = ({ onBack }) => {
                       >
                         <span className="relative z-10 flex items-center justify-center gap-3 w-full group-hover:text-background transition-colors">
                           {isSubmitting ? "Sending..." : "Send Message"} 
-                          <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                          <Send className="w-5 h-5" />
                         </span>
                       </button>
                     </form>
