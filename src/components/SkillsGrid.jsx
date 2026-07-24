@@ -1,82 +1,102 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Code2, Briefcase, TrendingUp, Languages } from "lucide-react";
+import { 
+  ArrowLeft, 
+  Code2, 
+  Briefcase, 
+  TrendingUp, 
+  Globe2, 
+  Terminal,
+  Cpu,
+  Database,
+  Smartphone,
+  Wrench,
+  CheckCircle2,
+  Sparkles,
+  Layers
+} from "lucide-react";
 
-const techStack = [
+const getTagSlug = (tag) => {
+  const map = {
+    "TypeScript": "typescript",
+    "JavaScript": "javascript",
+    "PHP": "php",
+    "Kotlin": "kotlin",
+    "Kotlin Mobile": "kotlin",
+    "Java": "openjdk",
+    "Python": "python",
+    "React": "react",
+    "Next.js": "nextdotjs",
+    "Vite": "vite",
+    "Tailwind CSS": "tailwindcss",
+    "HTML5 / CSS3": "html5",
+    "Laravel": "laravel",
+    "Node.js": "nodedotjs",
+    "MySQL": "mysql",
+    "PostgreSQL": "postgresql",
+    "SQLite": "sqlite",
+    "MongoDB": "mongodb",
+    "REST APIs": "postman",
+    "Android SDK": "android",
+    "Android": "android",
+    "Jetpack Compose": "jetpackcompose",
+    "Git & GitHub": "git",
+    "Git": "git",
+    "Docker": "docker",
+    "VS Code": "visualstudiocode",
+    "Figma": "figma",
+    "Vercel": "vercel",
+    "Firebase": "firebase",
+    "Postman": "postman",
+  };
+  return map[tag] || tag.toLowerCase().replace(/[^a-z0-9]/g, "");
+};
+
+const techCategories = [
   {
     name: "Languages",
-    shields: [
-      "https://img.shields.io/badge/TypeScript-0d1117?style=for-the-badge&logo=typescript&logoColor=3178C6",
-      "https://img.shields.io/badge/JavaScript-0d1117?style=for-the-badge&logo=javascript&logoColor=F7DF1E",
-      "https://img.shields.io/badge/PHP-0d1117?style=for-the-badge&logo=php&logoColor=777BB4",
-      "https://img.shields.io/badge/Kotlin-0d1117?style=for-the-badge&logo=kotlin&logoColor=7F52FF",
-      "https://img.shields.io/badge/Java-0d1117?style=for-the-badge&logo=openjdk&logoColor=ED8B00",
-      "https://img.shields.io/badge/Python-0d1117?style=for-the-badge&logo=python&logoColor=3776AB",
-    ],
+    skills: ["TypeScript", "JavaScript", "PHP", "Kotlin", "Java", "Python"],
   },
   {
     name: "Frontend",
-    shields: [
-      "https://img.shields.io/badge/React-0d1117?style=for-the-badge&logo=react&logoColor=61DAFB",
-      "https://img.shields.io/badge/Next.js-0d1117?style=for-the-badge&logo=next.js&logoColor=ffffff",
-      "https://img.shields.io/badge/Vite-0d1117?style=for-the-badge&logo=vite&logoColor=646CFF",
-      "https://img.shields.io/badge/Tailwind-0d1117?style=for-the-badge&logo=tailwind-css&logoColor=06B6D4",
-    ],
+    skills: ["React", "Next.js", "Vite", "Tailwind CSS", "HTML5 / CSS3"],
   },
   {
     name: "Backend & Database",
-    shields: [
-      "https://img.shields.io/badge/Laravel-0d1117?style=for-the-badge&logo=laravel&logoColor=FF2D20",
-      "https://img.shields.io/badge/Node.js-0d1117?style=for-the-badge&logo=node.js&logoColor=339933",
-      "https://img.shields.io/badge/MySQL-0d1117?style=for-the-badge&logo=mysql&logoColor=4479A1",
-      "https://img.shields.io/badge/PostgreSQL-0d1117?style=for-the-badge&logo=postgresql&logoColor=4169E1",
-      "https://img.shields.io/badge/SQLite-0d1117?style=for-the-badge&logo=sqlite&logoColor=003B57",
-      "https://img.shields.io/badge/MongoDB-0d1117?style=for-the-badge&logo=mongodb&logoColor=47A248",
-    ],
+    skills: ["Laravel", "Node.js", "MySQL", "PostgreSQL", "SQLite", "MongoDB", "REST APIs"],
   },
   {
     name: "Mobile",
-    shields: [
-      "https://img.shields.io/badge/Android-0d1117?style=for-the-badge&logo=android&logoColor=34A853",
-      "https://img.shields.io/badge/Jetpack_Compose-0d1117?style=for-the-badge&logo=jetpack-compose&logoColor=4285F4",
-    ],
+    skills: ["Android SDK", "Jetpack Compose", "Kotlin Mobile"],
   },
   {
     name: "Tools & DevOps",
-    shields: [
-      "https://img.shields.io/badge/Git-0d1117?style=for-the-badge&logo=git&logoColor=F05032",
-      "https://img.shields.io/badge/Docker-0d1117?style=for-the-badge&logo=docker&logoColor=2496ED",
-      "https://img.shields.io/badge/VS_Code-0d1117?style=for-the-badge&logo=visual-studio-code&logoColor=007ACC",
-      "https://img.shields.io/badge/Figma-0d1117?style=for-the-badge&logo=figma&logoColor=F24E1E",
-      "https://img.shields.io/badge/Vercel-0d1117?style=for-the-badge&logo=vercel&logoColor=ffffff",
-      "https://img.shields.io/badge/Firebase-0d1117?style=for-the-badge&logo=firebase&logoColor=DD2C00",
-      "https://img.shields.io/badge/Postman-0d1117?style=for-the-badge&logo=postman&logoColor=FF6C37",
-    ],
+    skills: ["Git & GitHub", "Docker", "VS Code", "Figma", "Vercel", "Firebase", "Postman"],
   },
 ];
 
 const executiveSkills = [
-  "Team Leadership & Mentorship",
-  "Technical Architecture Strategy",
-  "Startup Ecosystem Building",
-  "Project Management",
+  "Team Leadership & Technical Mentorship",
+  "System Architecture & Scalability Strategy",
+  "Startup Ecosystem & Business Development",
+  "Agile Project Management & Delivery",
   "IT Problem-Solving & Diagnostics",
-  "Cross-functional Communication",
+  "Cross-Functional Stakeholder Alignment",
 ];
 
 const marketingSkills = [
-  "Technical & On-Page SEO",
-  "Off-Page SEO Strategy",
-  "Web Performance & Speed Optimization",
-  "Content Writing & Strategy",
-  "Local SEO Optimization",
+  "Technical & On-Page SEO Optimization",
+  "Off-Page Strategy & Backlink Building",
+  "Web Core Vitals & Speed Performance",
+  "Content Strategy & Copywriting",
+  "Local SEO & Search Visibility Strategy",
 ];
 
 const spokenLanguages = [
-  { name: "Pashto (پښتو)", level: "Native" },
-  { name: "Urdu (اُردو)", level: "Native" },
-  { name: "Khowar (کھوار)", level: "Native" },
-  { name: "English", level: "Fluent" },
+  { name: "Pashto (پښتو)", level: "Native / First Language" },
+  { name: "Urdu (اُردو)", level: "Native Proficiency" },
+  { name: "Khowar (کھوار)", level: "Native Proficiency" },
+  { name: "English", level: "Professional Fluent" },
 ];
 
 const StaggeredLetters = ({ text, delay = 0, className }) => {
@@ -137,7 +157,6 @@ const AnimatedText = ({ text, className, delay = 0 }) => {
 const SkillsGrid = ({ onBack }) => {
   return (
     <section className="relative w-full py-12 md:py-32 overflow-hidden">
-
       <div className="w-full max-w-5xl mx-auto px-4 md:px-8 relative z-10">
 
         {/* Header Section */}
@@ -156,13 +175,12 @@ const SkillsGrid = ({ onBack }) => {
               Back to Home
             </button>
 
-
             <h2 className="text-5xl md:text-7xl font-black text-foreground tracking-tighter mb-8 leading-[1.1] relative">
               <StaggeredLetters text="Technical &" delay={0.1} /><br className="hidden md:block" />
               <StaggeredLetters text="Executive Arsenal" delay={0.4} />
             </h2>
             <div className="text-xl md:text-2xl text-muted-foreground max-w-2xl leading-relaxed mx-auto md:mx-0">
-              <AnimatedText text="A powerful toolbox built over years of engineering, entrepreneurship, and leading technical teams." delay={0.7} className="justify-center md:justify-start" />
+              <AnimatedText text="A comprehensive toolbox built over years of engineering, entrepreneurship, and leading technical teams." delay={0.7} className="justify-center md:justify-start" />
             </div>
           </motion.div>
         </div>
@@ -188,34 +206,44 @@ const SkillsGrid = ({ onBack }) => {
               transition={{ duration: 0.8, type: "spring", stiffness: 100, damping: 20 }}
               className="flex flex-col md:flex-row items-start gap-6 md:gap-24 py-16 md:py-24 border-b border-border/30 last:border-0"
             >
+              {/* Left Column: Icon & Name */}
               <div className="w-full md:w-1/3 flex flex-col items-start pt-1 sticky top-32">
                 <div className="w-12 h-12 rounded-full border border-border bg-background shadow-sm flex items-center justify-center text-foreground mb-6">
                   <Code2 className="w-5 h-5" />
                 </div>
-                <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">
+                <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-2">
                   Engineering Stack
                 </h3>
+                <p className="text-sm text-muted-foreground font-medium">
+                  Technologies, frameworks & platforms
+                </p>
               </div>
 
-              <div className="w-full md:w-2/3 max-w-none text-left space-y-12">
-                {techStack.map((category, index) => (
-                  <div key={index}>
-                    <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-4">
+              {/* Right Column: Categories & Badges */}
+              <div className="w-full md:w-2/3 space-y-10">
+                {techCategories.map((category, idx) => (
+                  <div key={idx} className="space-y-3.5">
+                    <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
                       {category.name}
                     </h4>
-                    <div className="flex flex-wrap gap-2.5">
-                      {category.shields.map((shield, i) => (
-                        <div 
-                          key={i}
-                          className="relative rounded-[3px] ring-1 ring-border/40 hover:ring-primary/40 transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 overflow-hidden flex items-center justify-center bg-[#0d1117]"
-                        >
-                          <img
-                            src={shield}
-                            alt="tech badge"
-                            className="h-7 cursor-default"
-                          />
-                        </div>
-                      ))}
+                    <div className="flex flex-wrap items-center gap-2.5">
+                      {category.skills.map((skill) => {
+                        const iconSlug = getTagSlug(skill);
+                        return (
+                          <span
+                            key={skill}
+                            className="px-4 py-2 rounded-full border border-border bg-secondary/40 text-xs md:text-sm font-medium text-foreground shadow-xs inline-flex items-center gap-2.5 hover:border-blue-500/50 transition-all duration-200 hover:scale-[1.02] cursor-default"
+                          >
+                            <img
+                              src={`https://cdn.simpleicons.org/${iconSlug}`}
+                              alt={skill}
+                              className="w-4 h-4 object-contain shrink-0"
+                              onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                            />
+                            {skill}
+                          </span>
+                        );
+                      })}
                     </div>
                   </div>
                 ))}
@@ -234,16 +262,19 @@ const SkillsGrid = ({ onBack }) => {
                 <div className="w-12 h-12 rounded-full border border-border bg-background shadow-sm flex items-center justify-center text-foreground mb-6">
                   <Briefcase className="w-5 h-5" />
                 </div>
-                <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">
+                <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-2">
                   Executive Leadership
                 </h3>
+                <p className="text-sm text-muted-foreground font-medium">
+                  Management & strategy
+                </p>
               </div>
 
-              <div className="w-full md:w-2/3 max-w-none text-left">
-                <ul className="space-y-6">
+              <div className="w-full md:w-2/3">
+                <ul className="space-y-5">
                   {executiveSkills.map((skill, j) => (
-                    <li key={j} className="flex gap-4 text-xl text-foreground font-medium leading-relaxed">
-                      <span className="shrink-0 w-2 h-2 rounded-full bg-blue-500/50 mt-3" />
+                    <li key={j} className="flex items-center gap-4 text-lg md:text-xl text-foreground font-medium leading-relaxed">
+                      <span className="shrink-0 w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-500" />
                       <span>{skill}</span>
                     </li>
                   ))}
@@ -263,20 +294,65 @@ const SkillsGrid = ({ onBack }) => {
                 <div className="w-12 h-12 rounded-full border border-border bg-background shadow-sm flex items-center justify-center text-foreground mb-6">
                   <TrendingUp className="w-5 h-5" />
                 </div>
-                <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">
+                <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-2">
                   Growth & SEO
                 </h3>
+                <p className="text-sm text-muted-foreground font-medium">
+                  Search visibility & reach
+                </p>
               </div>
 
-              <div className="w-full md:w-2/3 max-w-none text-left">
-                <ul className="space-y-6">
+              <div className="w-full md:w-2/3">
+                <ul className="space-y-5">
                   {marketingSkills.map((skill, j) => (
-                    <li key={j} className="flex gap-4 text-xl text-foreground font-medium leading-relaxed">
-                      <span className="shrink-0 w-2 h-2 rounded-full bg-blue-500/50 mt-3" />
+                    <li key={j} className="flex items-center gap-4 text-lg md:text-xl text-foreground font-medium leading-relaxed">
+                      <span className="shrink-0 w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-500" />
                       <span>{skill}</span>
                     </li>
                   ))}
                 </ul>
+              </div>
+            </motion.div>
+
+            {/* 4. Spoken Languages */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, type: "spring", stiffness: 100, damping: 20 }}
+              className="flex flex-col md:flex-row items-start gap-6 md:gap-24 py-16 md:py-24"
+            >
+              <div className="w-full md:w-1/3 flex flex-col items-start pt-1 sticky top-32">
+                <div className="w-12 h-12 rounded-full border border-border bg-background shadow-sm flex items-center justify-center text-foreground mb-6">
+                  <Globe2 className="w-5 h-5" />
+                </div>
+                <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-2">
+                  Spoken Languages
+                </h3>
+                <p className="text-sm text-muted-foreground font-medium">
+                  Global & regional communication
+                </p>
+              </div>
+
+              <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {spokenLanguages.map((lang, idx) => (
+                  <div
+                    key={idx}
+                    className="flex items-center gap-4 p-4 rounded-2xl border border-border bg-background transition-all group btn-wave-hover cursor-default"
+                  >
+                    <div className="w-10 h-10 shrink-0 rounded-full bg-secondary flex items-center justify-center text-foreground transition-colors relative z-10 group-hover:bg-background/20 group-hover:text-background dark:group-hover:text-background">
+                      <Globe2 className="w-5 h-5" />
+                    </div>
+                    <div className="min-w-0 relative z-10">
+                      <div className="text-sm font-bold text-foreground transition-colors group-hover:text-background dark:group-hover:text-background">
+                        {lang.name}
+                      </div>
+                      <div className="text-xs font-semibold text-muted-foreground truncate transition-colors group-hover:text-background/80 dark:group-hover:text-background/80">
+                        {lang.level}
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </motion.div>
 

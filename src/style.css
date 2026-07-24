@@ -292,6 +292,14 @@ body.loading {
   .btn-wave-hover:hover {
     color: hsl(var(--background));
   }
+
+  .dark .btn-wave-hover:hover {
+    color: hsl(var(--foreground));
+  }
+}
+
+.dark .btn-wave-hover::before {
+  background: hsl(var(--secondary));
 }
 
 .btn-wave-hover > * {
