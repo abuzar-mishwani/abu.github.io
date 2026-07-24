@@ -54,7 +54,7 @@ const FloatingNavDock = ({ activeView, onNavigate, theme }) => {
               },
             }}
           >
-            <div className="flex items-center gap-0.5 sm:gap-1.5 p-1 sm:p-2 rounded-full border border-border/80 bg-background/90 backdrop-blur-xl shadow-2xl shadow-blue-500/10 transition-all duration-300 hover:border-blue-500/40 overflow-hidden">
+            <div className="flex items-center gap-0.5 sm:gap-1.5 py-2 px-1.5 sm:p-2 rounded-full border border-border/80 bg-background/90 backdrop-blur-xl shadow-2xl shadow-blue-500/10 transition-all duration-300 hover:border-blue-500/40 overflow-hidden">
               {navItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = activeView === item.id;
